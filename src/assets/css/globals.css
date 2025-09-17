@@ -2,16 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 @import "tailwindcss";
-@import 'react-multi-carousel/lib/styles.css';
+@import "react-multi-carousel/lib/styles.css";
 :root {
-    --primary: #e34646;
-    --color-border: #b3b3b3;
+  --primary: #e34646;
+  --color-border: #b3b3b3;
 }
 .active {
-    @apply border-b-[2.5px] border-[#b3b3b3];
+  @apply border-b-[2.5px] border-[#b3b3b3];
 }
 
 .ct_input_sign_and_log-in-page {
-    @apply w-full text-black/85 font-semibold py-2.5 border-b-2 border-[#b3b3b3] outline-none focus:border-[#b6b6b6] ;
+  @apply w-full text-black/85 font-semibold py-2.5 border-b-2 border-[#b3b3b3] outline-none focus:border-[#b6b6b6];
 }
 
+.categories_card_default {
+  @apply w-[170px] h-[145px] border-[1px] border-[#b3b3b3] text-center text-black/80 rounded shadow transition hover:scale-105;
+}
+.categories_card_active {
+  @apply w-[170px] h-[145px] border-2 text-center bg-[#e34646] text-white rounded shadow  transition hover:scale-105;
+}

@@ -51,7 +51,7 @@ export default function Header() {
           {/* navbar */}
           <Navbar list={navbarList} />
           {/* action */}
-          <Action currentUser />
+          <Action  />
         </div>
       </div>
     </>

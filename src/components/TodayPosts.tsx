@@ -4,6 +4,7 @@ import productURL from "#/assets/images/keyboard.jpg";
 import { FaChevronLeft, FaStar, FaChevronRight } from "react-icons/fa";
 import Link from "next/link";
 import Carousel from "react-multi-carousel";
+import Button from "./Button";
 
 const products = [
   {
@@ -27,7 +28,7 @@ const products = [
     title: "Bàn phím cơ K550-v4",
     newPrice: 120,
     oldPrice: 190,
-    star: 4,
+    star: 2,
     totalBuy: 36,
   },
   {
@@ -35,7 +36,7 @@ const products = [
     title: "Bàn phím cơ K550-v4",
     newPrice: 120,
     oldPrice: 190,
-    star: 4,
+    star: 1,
     totalBuy: 36,
   },
   {
@@ -74,24 +75,24 @@ const products = [
 
 export default function TodayPosts() {
   return (
-    <div className="w-full h-screen">
-      <p className="pl-4 mb-6 border-l-12 border-[#e34646] rounded-md ">
+    <div className="w-full border-b-1 border-[#b3b3b3]">
+      <p className="pl-4 mb-6 border-l-12 border-[#e34646] rounded-md font-semibold">
         Todays
       </p>
       <div className="flex items-center justify-between mb-8">
-        <h1 className="w-2/6 text-3xl font-semibold">Flash Sales</h1>
+        <h1 className="w-2/6 text-4xl font-semibold">Flash Sales</h1>
         <div className="w-4/6 flex items-center justify-end gap-6 ">
           <h1>
             Ngày: <span>03</span>
           </h1>
           <h1>
-            Ngày: <span>03</span>
+            Giờ: <span>03</span>
           </h1>
           <h1>
-            Ngày: <span>03</span>
+            Phút: <span>03</span>
           </h1>
           <h1>
-            Ngày: <span>03</span>
+            Giây: <span>03</span>
           </h1>
         </div>
       </div>
@@ -160,6 +161,10 @@ export default function TodayPosts() {
           </Link>
         ))}
       </Carousel>
+        <div className="flex items-center justify-center mt-10">
+
+          <Button text="Xem thêm sản phẩm" primary w={234} h={56} />
+        </div>
     </div>
   );
 }

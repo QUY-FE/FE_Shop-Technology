@@ -76,7 +76,7 @@ export default function Banner() {
       
       <div className="w-full lg:w-9/12 lg:max-h-[500px] lg:py-[30px] lg:pl-[30px] ">
         <Carousel
-        //   autoPlay 
+        autoPlay 
         arrows={false}
           additionalTransfrom={0}
           autoPlaySpeed={5000}
