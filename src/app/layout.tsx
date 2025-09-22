@@ -2,7 +2,7 @@ import { Archivo } from "next/font/google";
 import '../assets/css/globals.css';
 import Header from "#/components/Header";
 import Footer from "#/components/Footer/Footer";
-
+import "react-multi-carousel/lib/styles.css";
 const geistArchivo = Archivo({
   variable: "--font-geist-archivo",
   subsets: ["latin"],

@@ -51,9 +51,7 @@ const tabbarMenu = [
     title: "Health & Beauty",
   },
 ];
-const allBanner = [
-    banner1,banner3,banner4
-]
+const allBanner = [banner1, banner3, banner4];
 
 export default function Banner() {
   return (
@@ -73,11 +71,11 @@ export default function Banner() {
           ))}
         </ul>
       </div>
-      
+
       <div className="w-full lg:w-9/12 lg:max-h-[500px] lg:py-[30px] lg:pl-[30px] ">
         <Carousel
-        // autoPlay 
-        arrows={false}
+          autoPlay
+          arrows={false}
           additionalTransfrom={0}
           autoPlaySpeed={5000}
           centerMode={false}
@@ -98,7 +96,6 @@ export default function Banner() {
           slidesToSlide={1}
           swipeable
         >
-          
           {allBanner.map((imgURL, index) => (
             <article
               key={index}
@@ -113,24 +110,23 @@ export default function Banner() {
               />
             </article>
           ))}
-          
         </Carousel>
       </div>
 
-      <div className="mt-4 snap-x" >
+      <div className="mt-4 snap-x">
         <div className="lg:hidden w-full overflow-x-auto whitespace-nowrap px-2 py-3">
-            <div className="flex space-x-3">
-                {tabbarMenu.map((item, index: number) => (
-                <Link
-                    key={index}
-                    href={item.href}
-                    className="px-4 py-2 text-sm font-medium bg-gray-100 rounded-md hover:bg-red-500 hover:text-white transition whitespace-nowrap active:bg-[#e34646]"
-                >
-                    {item.title}
-                </Link>
-                ))}
-            </div>
-            </div>
+          <div className="flex space-x-3">
+            {tabbarMenu.map((item, index: number) => (
+              <Link
+                key={index}
+                href={item.href}
+                className="px-4 py-2 text-sm font-medium bg-gray-100 rounded-md hover:bg-red-500 hover:text-white transition whitespace-nowrap active:bg-[#e34646]"
+              >
+                {item.title}
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

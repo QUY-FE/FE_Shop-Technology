@@ -7,29 +7,28 @@ import Action from "./Header/Action";
 import NavbarMobile from "./Header/NavbarMobile";
 
 const navbarList = [
-    {
-        id:1,
-        name:"Home",
-        href:"/"
-    },
-    {
-        id:2,
-        name:"About",
-        href:"/about"
-    },
-    {
-        id:3,
-        name:"Contact",
-        href:"/contact"
-    },
-    {
-        id:4,
-        name:"Sign in",
-        href:"/sign-in"
-    },
-]
+  {
+    id: 1,
+    name: "Home",
+    href: "/",
+  },
+  {
+    id: 2,
+    name: "About",
+    href: "/about",
+  },
+  {
+    id: 3,
+    name: "Contact",
+    href: "/contact",
+  },
+  {
+    id: 4,
+    name: "Sign in",
+    href: "/sign-in",
+  },
+];
 export default function Header() {
-
   return (
     <header>
       <Sales
@@ -37,7 +36,7 @@ export default function Header() {
         totalSales={47}
         titleSales="Giảm giá cực sốc trong mùa hè này với đồ bơi "
       />
-      <div className="border-b border-[#b3b3b3]">
+      <div className="border-b border-colorBorder">
         <div className="max-w-[1200px] h-[80px] mx-auto  flex items-center ">
           {/* Navbar mobile */}
           <NavbarMobile list={navbarList} />
@@ -51,7 +50,7 @@ export default function Header() {
           {/* navbar */}
           <Navbar list={navbarList} />
           {/* action */}
-          <Action currentUser />
+          <Action />
         </div>
       </div>
     </header>

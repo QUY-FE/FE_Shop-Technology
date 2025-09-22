@@ -14,7 +14,7 @@ const products = [
     oldPrice: 190,
     star: 4,
     totalBuy: 36,
-    totalSale: 20 
+    totalSale: 20,
   },
   {
     url: productURL,
@@ -23,7 +23,7 @@ const products = [
     oldPrice: 190,
     star: 4,
     totalBuy: 36,
-    totalSale: 24 
+    totalSale: 24,
   },
   {
     url: productURL,
@@ -32,7 +32,7 @@ const products = [
     oldPrice: 190,
     star: 2,
     totalBuy: 36,
-    totalSale: 21 
+    totalSale: 21,
   },
   {
     url: productURL,
@@ -41,7 +41,7 @@ const products = [
     oldPrice: 190,
     star: 1,
     totalBuy: 36,
-    totalSale: 31
+    totalSale: 31,
   },
   {
     url: productURL,
@@ -50,7 +50,7 @@ const products = [
     oldPrice: 190,
     star: 4,
     totalBuy: 36,
-    totalSale: 13
+    totalSale: 13,
   },
   {
     url: productURL,
@@ -59,7 +59,7 @@ const products = [
     oldPrice: 190,
     star: 4,
     totalBuy: 36,
-    totalSale: 29
+    totalSale: 29,
   },
   {
     url: productURL,
@@ -68,7 +68,7 @@ const products = [
     oldPrice: 190,
     star: 4,
     totalBuy: 36,
-    totalSale: 27 
+    totalSale: 27,
   },
   {
     url: productURL,
@@ -77,7 +77,7 @@ const products = [
     oldPrice: 190,
     star: 4,
     totalBuy: 36,
-    totalSale: 25
+    totalSale: 25,
   },
 ];
 
@@ -106,12 +106,12 @@ export default function FlashSales() {
       </div>
       <div className="w-full min-h-[400px]">
         <Carousel
-          // autoPlay
+          autoPlay
           autoPlaySpeed={3000}
           arrows
           additionalTransfrom={0}
           centerMode={false}
-          containerClass="carousel-container" 
+          containerClass="carousel-container"
           draggable
           infinite
           keyBoardControl
@@ -120,13 +120,13 @@ export default function FlashSales() {
           responsive={{
             desktop: { breakpoint: { max: 3000, min: 1200 }, items: 4 },
             tablet: { breakpoint: { max: 1024, min: 464 }, items: 3 },
-            mobile: { breakpoint: { max: 464, min: 0 }, items: 1 }, 
+            mobile: { breakpoint: { max: 464, min: 0 }, items: 1 },
           }}
           rewind
           slidesToSlide={1}
           swipeable
-          itemClass="px-2" 
-           customLeftArrow={
+          itemClass="px-2"
+          customLeftArrow={
             <button className="absolute left-2 top-1/2 -translate-y-1/2 bg-white shadow-md p-2 rounded-full hover:bg-gray-200">
               <FaChevronLeft className="text-red-500 text-xl" />
             </button>
@@ -142,10 +142,10 @@ export default function FlashSales() {
               className="relative group block  lg:w-[270px] h-[350px] transition"
               key={`product__${index}`}
             >
-              <Link  
-                href="/" 
+              <Link
+                href="/"
                 className="absolute inset-0 bg-black/35 text-white text-2xl font-semibold  hidden rounded-lg group-hover:flex items-center justify-center z-50"
-                >
+              >
                 Xem Sản phẩm
               </Link>
               <Image
@@ -153,7 +153,9 @@ export default function FlashSales() {
                 alt="keybroad"
                 className="relative w-full h-[250px] object-cover rounded-lg shadow-md"
               />
-              <span className="absolute top-4 left-3 w-[55px] h-[27px] bg-[#e34646] text-white rounded text-md text-center font-semibold">-{product?.totalSale}%</span>
+              <span className="absolute top-4 left-3 w-[55px] h-[27px] bg-[#e34646] text-white rounded text-md text-center font-semibold">
+                -{product?.totalSale}%
+              </span>
               <h1 className="w-full h-[40px] font-medium leading-[40px]">
                 {product?.title}
               </h1>
@@ -180,7 +182,6 @@ export default function FlashSales() {
           ))}
         </Carousel>
       </div>
-
       <div className="w-full min-h-[80px] flex items-center justify-center ">
         <Button text="Xem thêm sản phẩm" primary w={234} h={56} />
       </div>
