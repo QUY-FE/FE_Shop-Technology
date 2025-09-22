@@ -16,8 +16,8 @@
 }
 
 .categories_card_default {
-  @apply w-[170px] h-[145px] border-[1px] border-[#b3b3b3] text-center text-black/80 rounded shadow transition hover:scale-105;
+  @apply w-[170px] h-[145px] border-[1px] border-[#b3b3b3] text-center text-black/80 rounded shadow shadow-black/75 transition ;
 }
 .categories_card_active {
-  @apply w-[170px] h-[145px] border-2 text-center bg-[#e34646] text-white rounded shadow  transition hover:scale-105;
+  @apply w-[170px] h-[145px] border-2 text-center bg-[#e34646] text-white rounded shadow  transition ;
 }

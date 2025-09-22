@@ -2,22 +2,22 @@
 
 import Link from "next/link"
 
-export default function Sell(
+export default function Sales(
     {
-        hasSell = false, 
-        totalSell = 0, 
-        tilteSell = 'Summer Sale For All Swim Suits And Free Express Delivery' 
-    }: { hasSell?: boolean , totalSell?: number , tilteSell?: string}) {
+        hasSales = false, 
+        totalSales = 0, 
+        titleSales = 'Summer Sale For All Swim Suits And Free Express Delivery' 
+    }: { hasSales?: boolean , totalSales?: number , titleSales?: string}) {
   
     return(
         <div>
-        {/* Nếu isSell(Quảng Cáo) = true hiện thông báo giảm giá*/}
+        {/* Nếu isSales(Quảng Cáo) = true hiện thông báo giảm giá*/}
         {
-            hasSell ? 
+            hasSales ? 
             (
             <div className="w-full h-[36px] bg-black">
                 <p className="text-white block w-full h-full text-center leading-[36px] text-[13px]">
-                {tilteSell} - OFF {totalSell}%! 
+                {titleSales} - OFF {totalSales}%! 
                 <span className="font-bold underline ml-3">
                     <Link href='/'>
                         Shop now

@@ -1,6 +1,7 @@
 import { Archivo } from "next/font/google";
 import '../assets/css/globals.css';
 import Header from "#/components/Header";
+import Footer from "#/components/Footer/Footer";
 
 const geistArchivo = Archivo({
   variable: "--font-geist-archivo",
@@ -18,12 +19,12 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
         className={`${geistArchivo.variable}  antialiased`}
       >
         <Header />
-         <div className="w-full">
-          <div className="max-w-[1200px] h-screen mx-auto">
+         <div className="w-full min-h-screen">
+          <main className="max-w-[1200px] mx-auto">
             {children}
-          </div>
-        </div>
-   
+          </main>
+        </div>      
+        <Footer />
       </body>
     </html>
   );

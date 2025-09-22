@@ -6,7 +6,7 @@ import { FaChartBar } from "react-icons/fa6";
 export default function NavbarMobile({list = []}: {list?: {id:number,name:string,href:string}[]}) {
     const [dropdown, setDropdown] = useState<boolean>(false);
     return(
-         <div className="w-3/12 sm:block lg:hidden h-full leading-20 flex items-center pl-4 relative">
+         <nav className="w-3/12 sm:block lg:hidden h-full leading-20 flex items-center pl-4 relative">
             <span className="flex w-1/3 h-full items-center text-black/85 " onClick={() => setDropdown(!dropdown)}>
               <FaChartBar size={22} />
               {dropdown && (
@@ -37,6 +37,6 @@ export default function NavbarMobile({list = []}: {list?: {id:number,name:string
                 </>
               )}
             </span>
-          </div>
+          </nav>
     );
 }

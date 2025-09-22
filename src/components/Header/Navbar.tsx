@@ -7,7 +7,7 @@ export default function Navbar({list = []}: {list?: {id:number,name:string,href:
     
     const pathname = usePathname();
   return (
-    <div className="hidden lg:block  lg:w-5/12 h-full leading-20 ">
+    <nav className="hidden lg:block  lg:w-5/12 h-full leading-20 ">
       <ul className=" flex items-center justify-end h-full gap-8 ">
         {list.map((item) => (
           <li key={item.id}>
@@ -22,6 +22,6 @@ export default function Navbar({list = []}: {list?: {id:number,name:string,href:
           </li>
         ))}
       </ul>
-    </div>
+    </nav>
   );
 }

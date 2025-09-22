@@ -57,7 +57,7 @@ const allBanner = [
 
 export default function Banner() {
   return (
-    <div className="w-full lg:flex mb-20 ">
+    <section className="w-full lg:flex mb-20 ">
       <div className="lg:w-3/12 hidden lg:block   max-h-[500px] py-[30px] pr-[12px] border-r-2 border-[#dbdbdb]">
         <ul>
           {tabbarMenu.map((item, index: number) => (
@@ -76,7 +76,7 @@ export default function Banner() {
       
       <div className="w-full lg:w-9/12 lg:max-h-[500px] lg:py-[30px] lg:pl-[30px] ">
         <Carousel
-        autoPlay 
+        // autoPlay 
         arrows={false}
           additionalTransfrom={0}
           autoPlaySpeed={5000}
@@ -100,7 +100,7 @@ export default function Banner() {
         >
           
           {allBanner.map((imgURL, index) => (
-            <div
+            <article
               key={index}
               className="relative w-full h-[280px] lg:h-[500px] rounded-lg overflow-hidden shadow-md"
             >
@@ -111,7 +111,7 @@ export default function Banner() {
                 className="object-cover"
                 priority={index === 0}
               />
-            </div>
+            </article>
           ))}
           
         </Carousel>
@@ -132,6 +132,6 @@ export default function Banner() {
             </div>
             </div>
       </div>
-    </div>
+    </section>
   );
 }

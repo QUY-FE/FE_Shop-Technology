@@ -1,5 +1,6 @@
 'use client'
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { FaShoppingCart,FaSearch,FaUser,FaShoppingBag } from "react-icons/fa";
 import { IoMdSettings,IoMdExit } from "react-icons/io";
@@ -34,9 +35,10 @@ const userMenu = [
 
 export default function Action({currentUser = false}: {currentUser?: boolean}) {
     const [dropdown, setDropdown] = useState<boolean>(false);
-    
+    const pathname = usePathname();
+
   return (
-    <div className="w-3/12 lg:w-5/12 h-full flex items-center justify-end gap-6">
+    <section className="w-3/12 lg:w-5/12 h-full flex items-center justify-end gap-6">
       <div className="bg-[#f5f5f5] hidden  rounded-md lg:flex items-center px-2">
         <input
           type="text"
@@ -48,9 +50,9 @@ export default function Action({currentUser = false}: {currentUser?: boolean}) {
           <FaSearch />
         </span>
       </div>
-      <span className="block text-black/85 pr-2">
-        <FaShoppingCart size={22} />
-      </span>
+      <Link href={currentUser ? '/my-cart' :'/sign-in'} className="w-12 h-12 flex items-center justify-center rounded-full hover:bg-black/10">
+        <FaShoppingCart className={`${pathname === '/my-cart'? 'text-red-500': ''} pb-1 transition`} size={28} />
+      </Link>
       {
         currentUser ? (
         <span className="block text-black text-center leading-[40px] relative w-[40px]  " onClick={() => setDropdown(!dropdown)}>
@@ -85,6 +87,6 @@ export default function Action({currentUser = false}: {currentUser?: boolean}) {
         ) : 
         null
       }
-    </div>
+    </section>
   );
 }

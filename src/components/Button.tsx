@@ -3,11 +3,13 @@ export default function Button({
   text = "Thêm text",
   w = 225,
   h = 55,
+  className = '',
 }: {
   primary?: boolean;
   text?: string;
   w?: number | string; // hỗ trợ số hoặc "100%"
   h?: number | string;
+  className?: string
 }) {
   const style = {
     width: typeof w === "number" ? `${w}px` : w,
@@ -19,14 +21,14 @@ export default function Button({
       {primary ? (
         <button
           style={style}
-          className="bg-[#e34646] text-white rounded my-4 shadow cursor-pointer hover:bg-[#fd5151] hover:shadow-xl transition"
+          className={`${className}bg-[#e34646] text-white rounded my-4 shadow cursor-pointer hover:bg-[#fd5151] hover:shadow-xl transition`}
         >
           {text}
         </button>
       ) : (
         <button
           style={style}
-          className="border-2 border-[#dbdbdb] shadow cursor-pointer hover:shadow-xl"
+          className={`${className}border-2 border-[#dbdbdb] shadow cursor-pointer hover:shadow-xl`}
         >
           {text}
         </button>
