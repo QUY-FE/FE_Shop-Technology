@@ -3,87 +3,13 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import productURL from "#/assets/images/keyboard.jpg";
 import { FaStar } from "react-icons/fa";
 import Link from "next/link";
 
-const products = [
-  {
-    url: productURL,
-    title: "Bàn phím cơ K550-v4",
-    newPrice: 120,
-    oldPrice: 190,
-    star: 4,
-    totalBuy: 36,
-    totalSale: 20 
-  },
-  {
-    url: productURL,
-    title: "Bàn phím cơ K550-v4",
-    newPrice: 120,
-    oldPrice: 190,
-    star: 4,
-    totalBuy: 36,
-    totalSale: 24 
-  },
-  {
-    url: productURL,
-    title: "Bàn phím cơ K550-v4",
-    newPrice: 120,
-    oldPrice: 190,
-    star: 2,
-    totalBuy: 36,
-    totalSale: 21 
-  },
-  {
-    url: productURL,
-    title: "Bàn phím cơ K550-v4",
-    newPrice: 120,
-    oldPrice: 190,
-    star: 1,
-    totalBuy: 36,
-    totalSale: 31
-  },
-  {
-    url: productURL,
-    title: "Bàn phím cơ K550-v4",
-    newPrice: 120,
-    oldPrice: 190,
-    star: 4,
-    totalBuy: 36,
-    totalSale: 13
-  },
-  {
-    url: productURL,
-    title: "Bàn phím cơ K550-v4",
-    newPrice: 120,
-    oldPrice: 190,
-    star: 4,
-    totalBuy: 36,
-    totalSale: 29
-  },
-  {
-    url: productURL,
-    title: "Bàn phím cơ K550-v4",
-    newPrice: 120,
-    oldPrice: 190,
-    star: 4,
-    totalBuy: 36,
-    totalSale: 27 
-  },
-  {
-    url: productURL,
-    title: "Bàn phím cơ K550-v4",
-    newPrice: 120,
-    oldPrice: 190,
-    star: 4,
-    totalBuy: 36,
-    totalSale: 25
-  },
-];
-const ITEMS_PER_PAGE = 8;
 
-export default function ProductList() {
+
+const ITEMS_PER_PAGE = 8;
+export default function ProductList({products = []}:{products?:{ url:string,title:string,newPrice:number,oldPrice:number,star:number,totalBuy:number,totalSale:number}[]}) {
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalPages = Math.ceil(products.length / ITEMS_PER_PAGE);
@@ -106,19 +32,21 @@ export default function ProductList() {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {paginatedProducts.map((product,index) => (
           <article
-              className="relative group block  lg:w-[270px] h-[350px] transition"
+              className="relative group block w-[270px]  h-[370px] transition"
               key={`product__${index}`}
             >
               <Link
                 href="/" 
-                className="absolute inset-0 bg-black/35 text-white text-2xl font-semibold  hidden rounded-lg group-hover:flex items-center justify-center z-50"
+                className="absolute inset-0 bg-black/15 text-white text-2xl font-semibold  hidden rounded-lg group-hover:flex items-center justify-center z-50"
                 >
                 Xem Sản phẩm
               </Link>
               <Image
                 src={product?.url}
                 alt={product?.title}
-                className="relative w-full h-[250px] object-cover rounded-lg shadow-md"
+                width={270}
+                height={250}
+                className="relative object-cover rounded-lg shadow-md"
               />
               <span className="absolute top-4 left-3 w-[55px] h-[27px] bg-[#e34646] text-white rounded text-md text-center font-semibold">-{product?.totalSale}%</span>
               <h1 className="w-full h-[40px] font-medium leading-[40px]">

@@ -43,7 +43,7 @@ export default function Action({currentUser = false}: {currentUser?: boolean}) {
         <input
           type="text"
           placeholder="What are you looking for?"
-          className="w-[244px] h-[38px] px-2 outline-none"
+          className="w-[244px] h-[38px] px-2 outline-none bg-[#f5f5f5]" 
         />
 
         <span className="text-black/70 px-2">

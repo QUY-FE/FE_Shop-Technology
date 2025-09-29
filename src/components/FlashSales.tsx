@@ -1,87 +1,12 @@
 "use client";
 import Image from "next/image";
-import productURL from "#/assets/images/keyboard.jpg";
 import { FaChevronLeft, FaStar, FaChevronRight } from "react-icons/fa";
 import Link from "next/link";
 import Carousel from "react-multi-carousel";
 import Button from "./Button";
 
-const products = [
-  {
-    url: productURL,
-    title: "Bàn phím cơ K550-v4",
-    newPrice: 120,
-    oldPrice: 190,
-    star: 4,
-    totalBuy: 36,
-    totalSale: 20,
-  },
-  {
-    url: productURL,
-    title: "Bàn phím cơ K550-v4",
-    newPrice: 120,
-    oldPrice: 190,
-    star: 4,
-    totalBuy: 36,
-    totalSale: 24,
-  },
-  {
-    url: productURL,
-    title: "Bàn phím cơ K550-v4",
-    newPrice: 120,
-    oldPrice: 190,
-    star: 2,
-    totalBuy: 36,
-    totalSale: 21,
-  },
-  {
-    url: productURL,
-    title: "Bàn phím cơ K550-v4",
-    newPrice: 120,
-    oldPrice: 190,
-    star: 1,
-    totalBuy: 36,
-    totalSale: 31,
-  },
-  {
-    url: productURL,
-    title: "Bàn phím cơ K550-v4",
-    newPrice: 120,
-    oldPrice: 190,
-    star: 4,
-    totalBuy: 36,
-    totalSale: 13,
-  },
-  {
-    url: productURL,
-    title: "Bàn phím cơ K550-v4",
-    newPrice: 120,
-    oldPrice: 190,
-    star: 4,
-    totalBuy: 36,
-    totalSale: 29,
-  },
-  {
-    url: productURL,
-    title: "Bàn phím cơ K550-v4",
-    newPrice: 120,
-    oldPrice: 190,
-    star: 4,
-    totalBuy: 36,
-    totalSale: 27,
-  },
-  {
-    url: productURL,
-    title: "Bàn phím cơ K550-v4",
-    newPrice: 120,
-    oldPrice: 190,
-    star: 4,
-    totalBuy: 36,
-    totalSale: 25,
-  },
-];
 
-export default function FlashSales() {
+export default function FlashSales({products = []}:{products?:{ url:string,title:string,newPrice:number,oldPrice:number,star:number,totalBuy:number,totalSale:number}[]}) {
   return (
     <section className="w-full border-b-1 border-[#b3b3b3]">
       <p className="pl-4 mb-6 border-l-12 border-[#e34646] text-2xl rounded-md font-semibold">
@@ -139,19 +64,21 @@ export default function FlashSales() {
         >
           {products.map((product, index) => (
             <article
-              className="relative group block  lg:w-[270px] h-[350px] transition"
+              className="relative group block w-[270px] h-[370px] transition"
               key={`product__${index}`}
             >
               <Link
                 href="/"
-                className="absolute inset-0 bg-black/35 text-white text-2xl font-semibold  hidden rounded-lg group-hover:flex items-center justify-center z-50"
+                className="absolute inset-0 bg-black/15 text-white text-2xl font-semibold  hidden rounded-lg group-hover:flex items-center justify-center z-50"
               >
                 Xem Sản phẩm
               </Link>
               <Image
                 src={product?.url}
-                alt="keybroad"
-                className="relative w-full h-[250px] object-cover rounded-lg shadow-md"
+                alt={product?.title}
+                width={270}
+                height={250}
+                className="relative object-cover rounded-lg shadow-md"
               />
               <span className="absolute top-4 left-3 w-[55px] h-[27px] bg-[#e34646] text-white rounded text-md text-center font-semibold">
                 -{product?.totalSale}%

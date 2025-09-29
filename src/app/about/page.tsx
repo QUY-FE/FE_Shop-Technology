@@ -67,6 +67,9 @@ export default function About() {
       </div>
 
       {/* Staff carousel */}
+      <div className='mt-10'>
+        <h1 className='text-3xl font-bold'>Các thành viên</h1>
+      </div>
       <div className="w-full h-[600px] mt-20 relative">
         <Carousel
           arrows
