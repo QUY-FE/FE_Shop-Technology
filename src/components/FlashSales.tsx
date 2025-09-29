@@ -1,9 +1,9 @@
 "use client";
 import Image from "next/image";
-import { FaChevronLeft, FaStar, FaChevronRight } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 import Link from "next/link";
 import Carousel from "react-multi-carousel";
-import Button from "./Button";
+import Button, { CustomLeftArrow, CustomRightArrow } from "./Button/Button";
 
 
 export default function FlashSales({products = []}:{products?:{ url:string,title:string,newPrice:number,oldPrice:number,star:number,totalBuy:number,totalSale:number}[]}) {
@@ -31,7 +31,7 @@ export default function FlashSales({products = []}:{products?:{ url:string,title
       </div>
       <div className="w-full min-h-[400px]">
         <Carousel
-          autoPlay
+          // autoPlay
           autoPlaySpeed={3000}
           arrows
           additionalTransfrom={0}
@@ -52,14 +52,10 @@ export default function FlashSales({products = []}:{products?:{ url:string,title
           swipeable
           itemClass="px-2"
           customLeftArrow={
-            <button className="absolute left-2 top-1/2 -translate-y-1/2 bg-white shadow-md p-2 rounded-full hover:bg-gray-200">
-              <FaChevronLeft className="text-red-500 text-xl" />
-            </button>
+           <CustomLeftArrow/>
           }
           customRightArrow={
-            <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-white shadow-md p-2 rounded-full hover:bg-gray-200">
-              <FaChevronRight className="text-red-500 text-xl" />
-            </button>
+            <CustomRightArrow/>
           }
         >
           {products.map((product, index) => (

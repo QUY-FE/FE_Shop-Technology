@@ -2,7 +2,7 @@
 import Image from "next/image";
 import productURL from "#/assets/images/keyboard.jpg";
 import { useState } from "react";
-import Button from "#/components/Button";
+import Button from "#/components/Button/Button";
 import Link from "next/link";
 const initialCartList = [
     {

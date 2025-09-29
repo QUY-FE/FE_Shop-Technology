@@ -11,7 +11,7 @@ import Link from "next/link";
 const ITEMS_PER_PAGE = 8;
 export default function ProductList({products = []}:{products?:{ url:string,title:string,newPrice:number,oldPrice:number,star:number,totalBuy:number,totalSale:number}[]}) {
   const [currentPage, setCurrentPage] = useState(1);
-
+ 
   const totalPages = Math.ceil(products.length / ITEMS_PER_PAGE);
 
   const paginatedProducts = products.slice(

@@ -1,5 +1,5 @@
 'use client'
-import Button from "#/components/Button";
+import Button from "#/components/Button/Button";
 import { FaPhone } from "react-icons/fa6";
 import { TbMail } from "react-icons/tb";
 export default function Contact() {

@@ -6,13 +6,14 @@ import womenAvatar from '#/assets/images/women_avatar.png'
 import menAvatar from '#/assets/images/men_avatar.jpg'
 
 import { FaInstagram } from "react-icons/fa6";
-import { FaChevronLeft, FaChevronRight, FaFacebookSquare } from "react-icons/fa";
+import { FaFacebookSquare } from "react-icons/fa";
 import { AiFillTikTok } from "react-icons/ai";
 import { CiTwitter } from "react-icons/ci";
 
 
 import Image from 'next/image';
 import Interest from '#/components/Interest';
+import { CustomLeftArrow, CustomRightArrow } from '#/components/Button/Button';
 
 const staffList = [
   {
@@ -91,14 +92,10 @@ export default function About() {
           swipeable
           itemClass="px-4"
           customLeftArrow={
-            <button className="absolute left-2 top-1/2 -translate-y-1/2 bg-white shadow-md p-2 rounded-full hover:bg-gray-200 z-10">
-              <FaChevronLeft className="text-red-500 text-xl" />
-            </button>
+            <CustomLeftArrow />
           }
           customRightArrow={
-            <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-white shadow-md p-2 rounded-full hover:bg-gray-200 z-10">
-              <FaChevronRight className="text-red-500 text-xl" />
-            </button>
+            <CustomRightArrow/>
           }
         >
           {staffList.map((item, index) => (

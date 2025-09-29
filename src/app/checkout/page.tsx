@@ -1,6 +1,6 @@
 import Image from "next/image";
 import productURL from "#/assets/images/keyboard.jpg";
-import Button from "#/components/Button";
+import Button from "#/components/Button/Button";
 
 export default function CheckOut() {
   return (

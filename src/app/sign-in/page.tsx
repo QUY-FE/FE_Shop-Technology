@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { TiDelete } from "react-icons/ti";
-import Button from "#/components/Button";
+import Button from "#/components/Button/Button";
 export default function SignIn() {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');

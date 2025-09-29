@@ -1,3 +1,26 @@
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+
+
+// Nút carousel trái
+export const CustomLeftArrow = ({ onClick }: { onClick?: () => void }) => (
+  <button
+    onClick={onClick}
+    className="absolute left-2 top-1/2 -translate-y-1/2 bg-white shadow-md p-2 rounded-full hover:bg-gray-100"
+  >
+    <FaChevronLeft className="text-red-500 text-xl" />
+  </button>
+);
+// Nút carousel phải
+export const CustomRightArrow = ({ onClick }: { onClick?: () => void }) => (
+  <button
+    onClick={onClick}
+    className="absolute right-2 top-1/2 -translate-y-1/2 bg-white shadow-md p-2 rounded-full hover:bg-gray-100"
+  >
+    <FaChevronRight className="text-red-500 text-xl" />
+  </button>
+);
+
+
 export default function Button({
   primary = false,
   text = "Thêm text",
@@ -36,3 +59,4 @@ export default function Button({
     </>
   );
 }
+

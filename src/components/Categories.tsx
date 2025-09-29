@@ -3,12 +3,13 @@
 import { useState } from "react";
 import { MdPhoneIphone } from "react-icons/md";
 import { CiLaptop } from "react-icons/ci";
-import { FaChevronLeft, FaChevronRight, FaHeadphonesAlt } from "react-icons/fa";
+import { FaHeadphonesAlt } from "react-icons/fa";
 import { CiCamera } from "react-icons/ci";
 import { IoGameControllerOutline } from "react-icons/io5";
 import { FaComputer } from "react-icons/fa6";
 import { TbHorseToy } from "react-icons/tb";
 import Carousel from "react-multi-carousel";
+import { CustomLeftArrow, CustomRightArrow } from "./Button/Button";
 
 const categoriesList = [
   {
@@ -89,14 +90,10 @@ export default function Categories() {
                   swipeable
                   itemClass="px-4" 
                    customLeftArrow={
-                    <button className="absolute left-2 top-1/2 -translate-y-1/2 bg-white shadow-md p-2 rounded-full hover:bg-gray-200">
-                      <FaChevronLeft className="text-red-500 text-xl" />
-                    </button>
+                    <CustomLeftArrow/>
                   }
                   customRightArrow={
-                    <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-white shadow-md p-2 rounded-full hover:bg-gray-200">
-                      <FaChevronRight className="text-red-500 text-xl" />
-                    </button>
+                    <CustomRightArrow/>
                   }
                 >
                   {categoriesList.map((category, index) => (
