@@ -5,8 +5,20 @@ import Link from "next/link";
 import Carousel from "react-multi-carousel";
 import Button, { CustomLeftArrow, CustomRightArrow } from "./Button/Button";
 
-
-export default function FlashSales({products = []}:{products?:{ url:string,title:string,newPrice:number,oldPrice:number,star:number,totalBuy:number,totalSale:number}[]}) {
+export default function FlashSales({
+  products = [],
+}: {
+  products?: {
+    slug: string,
+    url: string;
+    title: string;
+    newPrice: number;
+    oldPrice: number;
+    star: number;
+    countBuy: number;
+    salePercent: number;
+  }[];
+}) {
   return (
     <section className="w-full border-b-1 border-[#b3b3b3]">
       <p className="pl-4 mb-6 border-l-12 border-[#e34646] text-2xl rounded-md font-semibold">
@@ -51,12 +63,8 @@ export default function FlashSales({products = []}:{products?:{ url:string,title
           slidesToSlide={1}
           swipeable
           itemClass="px-2"
-          customLeftArrow={
-           <CustomLeftArrow/>
-          }
-          customRightArrow={
-            <CustomRightArrow/>
-          }
+          customLeftArrow={<CustomLeftArrow />}
+          customRightArrow={<CustomRightArrow />}
         >
           {products.map((product, index) => (
             <article
@@ -64,7 +72,7 @@ export default function FlashSales({products = []}:{products?:{ url:string,title
               key={`product__${index}`}
             >
               <Link
-                href="/"
+                href={`/product/${product?.slug}`}
                 className="absolute inset-0 bg-black/15 text-white text-2xl font-semibold  hidden rounded-lg group-hover:flex items-center justify-center z-50"
               >
                 Xem Sản phẩm
@@ -77,7 +85,7 @@ export default function FlashSales({products = []}:{products?:{ url:string,title
                 className="relative object-cover rounded-lg shadow-md"
               />
               <span className="absolute top-4 left-3 w-[55px] h-[27px] bg-[#e34646] text-white rounded text-md text-center font-semibold">
-                -{product?.totalSale}%
+                -{product?.salePercent}%
               </span>
               <h1 className="w-full h-[40px] font-medium leading-[40px]">
                 {product?.title}
@@ -86,7 +94,7 @@ export default function FlashSales({products = []}:{products?:{ url:string,title
                 <p className="h-[30px] text-[#e34646] text-lg font-medium leading-[30px]">
                   ${product?.newPrice}
                 </p>
-                <p className="h-[30px] leading-[30px] font-medium line-through text-black/60">
+                <p className="h-[30px] leading-[30px] font-medium text-sm italic line-through text-black/60">
                   ${product?.oldPrice}
                 </p>
               </div>
@@ -98,7 +106,7 @@ export default function FlashSales({products = []}:{products?:{ url:string,title
                   />
                 ))}
                 <p className="px-4 text-black/70 font-medium">
-                  ({product?.totalBuy})
+                  ({product?.countBuy})
                 </p>
               </div>
             </article>

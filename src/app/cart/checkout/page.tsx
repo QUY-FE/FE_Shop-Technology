@@ -5,15 +5,37 @@ import Button from "#/components/Button/Button";
 export default function CheckOut() {
   return (
     <section className="max-w-6xl mx-auto py-10 grid grid-cols-1 md:grid-cols-2 gap-10">
+      {/* form điền thông tin */}
       <div>
-        <h2 className="text-2xl font-semibold mb-6">Billing Details</h2>
+        <h2 className="text-2xl font-semibold mb-6">Thông tin đơn hàng</h2>
         <form className="space-y-5">
           <div>
             <label className="block text-sm font-medium">
-              First Name <span className="text-red-500">*</span>
+              Họ & tên <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
+              name="username"
+              className="w-full bg-gray-100 outline-none rounded-md px-3 py-2 focus:bg-gray-200"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium">
+              Địa chỉ <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              name="address"
+              className="w-full bg-gray-100 outline-none rounded-md px-3 py-2 focus:bg-gray-200"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium">
+              Số điện thoại <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              name="phoneNumber"
               className="w-full bg-gray-100 outline-none rounded-md px-3 py-2 focus:bg-gray-200"
             />
           </div>
@@ -29,7 +51,7 @@ export default function CheckOut() {
           </div>
         </form>
       </div>
-
+      {/* Phần thanh toán */}
       <div className="p-6">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
@@ -65,8 +87,8 @@ export default function CheckOut() {
             <p>$111</p>
           </div>
           <div className="flex items-center justify-between border-b-2 border-[#b3b3b3] py-5">
-            <p>Tổng tiền</p>
-            <p>$111</p>
+            <p>Tiền ship</p>
+            <p>$1</p>
           </div>
         </div>
 
@@ -75,7 +97,7 @@ export default function CheckOut() {
             <input
               type="radio"
               name="payment"
-              className="h-4 w-4 text-red-500"
+              className="h-4 w-4 text-primary"
             />
             <span className="flex items-center gap-2">
               Bank
@@ -99,17 +121,17 @@ export default function CheckOut() {
             <input
               type="radio"
               name="payment"
-              className="h-4 w-4 text-red-500"
+              className="h-4 w-4 text-primary"
             />
             <span>Thanh toán khi nhận hàng</span>
           </label>
         </div>
 
-        <div className=" flex items-center justify-between">
+        <div className=" flex items-center justify-around">
           <input
             type="text"
             placeholder="Nhập mã phiêu"
-            className="px-4 py-2 outline-2 rounded"
+            className="px-4 py-2 outline-2 outline rounded-md"
           />
           <Button primary w={218} h={56} text="Áp dụng phiếu giảm giá" />
         </div>

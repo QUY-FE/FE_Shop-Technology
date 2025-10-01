@@ -1,17 +1,28 @@
-
 "use client";
 
 import { useState } from "react";
 import Image from "next/image";
-import { FaStar } from "react-icons/fa";
 import Link from "next/link";
 
-
+import { FaStar } from "react-icons/fa";
 
 const ITEMS_PER_PAGE = 8;
-export default function ProductList({products = []}:{products?:{ url:string,title:string,newPrice:number,oldPrice:number,star:number,totalBuy:number,totalSale:number}[]}) {
+export default function ProductList({
+  products = [],
+}: {
+  products?: {
+    slug: string,
+    url: string;
+    title: string;
+    newPrice: number;
+    oldPrice: number;
+    star: number;
+    countBuy: number;
+    salePercent: number;
+  }[];
+}) {
   const [currentPage, setCurrentPage] = useState(1);
- 
+
   const totalPages = Math.ceil(products.length / ITEMS_PER_PAGE);
 
   const paginatedProducts = products.slice(
@@ -23,55 +34,54 @@ export default function ProductList({products = []}:{products?:{ url:string,titl
     <section className="w-full pb-10">
       <div className="mb-10">
         <p className="pl-4 mb-6 border-l-12 border-[#e34646] text-2xl rounded-md font-semibold">
-        Our Products
+          Our Products
         </p>
         <h1 className="text-3xl font-semibold">Explore Our Products</h1>
       </div>
 
       {/* Product Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {paginatedProducts.map((product,index) => (
+        {paginatedProducts.map((product, index) => (
           <article
-              className="relative group block w-[270px]  h-[370px] transition"
-              key={`product__${index}`}
+            className="relative group block w-[270px]  h-[370px] transition"
+            key={`product__${index}`}
+          >
+            <Link
+              href={`/product/${product?.slug}`}
+              className="absolute inset-0 bg-black/15 text-white text-2xl font-semibold  hidden rounded-lg group-hover:flex items-center justify-center z-50"
             >
-              <Link
-                href="/" 
-                className="absolute inset-0 bg-black/15 text-white text-2xl font-semibold  hidden rounded-lg group-hover:flex items-center justify-center z-50"
-                >
-                Xem Sản phẩm
-              </Link>
-              <Image
-                src={product?.url}
-                alt={product?.title}
-                width={270}
-                height={250}
-                className="relative object-cover rounded-lg shadow-md"
-              />
-              <span className="absolute top-4 left-3 w-[55px] h-[27px] bg-[#e34646] text-white rounded text-md text-center font-semibold">-{product?.totalSale}%</span>
-              <h1 className="w-full h-[40px] font-medium leading-[40px]">
-                {product?.title}
-              </h1>
-              <div className="flex items-center gap-3">
-                <p className="h-[30px] text-[#e34646] text-lg font-medium leading-[30px]">
-                  ${product?.newPrice}
-                </p>
-                <p className="h-[30px] leading-[30px] font-medium line-through text-black/60">
-                  ${product?.oldPrice}
-                </p>
-              </div>
-              <div className="flex items-center h-[30px] leading-[30px]">
-                {[...Array(5)].map((_, i) => (
-                  <FaStar
-                    key={i}
-                    color={i < product.star ? "#ffad33" : "gray"}
-                  />
-                ))}
-                <p className="px-4 text-black/70 font-medium">
-                  ({product?.totalBuy})
-                </p>
-              </div>
-            </article>
+              Xem Sản phẩm
+            </Link>
+            <Image
+              src={product?.url}
+              alt={product?.title}
+              width={270}
+              height={250}
+              className="relative object-cover rounded-lg shadow-md"
+            />
+            <span className="absolute top-4 left-3 w-[55px] h-[27px] bg-[#e34646] text-white rounded text-md text-center font-semibold">
+              -{product?.salePercent}%
+            </span>
+            <h1 className="w-full h-[40px] font-medium leading-[40px]">
+              {product?.title}
+            </h1>
+            <div className="flex items-center gap-3">
+              <p className="h-[30px] text-[#e34646] text-lg font-medium leading-[30px]">
+                ${product?.newPrice}
+              </p>
+              <p className="h-[30px] leading-[30px] font-medium text-sm italic line-through text-black/60 ">
+                ${product?.oldPrice}
+              </p>
+            </div>
+            <div className="flex items-center h-[30px] leading-[30px]">
+              {[...Array(5)].map((_, i) => (
+                <FaStar key={i} color={i < product.star ? "#ffad33" : "gray"} />
+              ))}
+              <p className="px-4 text-black/70 font-medium">
+                ({product?.countBuy})
+              </p>
+            </div>
+          </article>
         ))}
       </div>
 

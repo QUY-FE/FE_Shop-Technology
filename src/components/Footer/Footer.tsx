@@ -19,26 +19,33 @@ import Link from "next/link";
 export default function Footer() {
     const [email, setEmail] = useState<string>('');
 
-    const igLink = '';
-    const fbLink = '';
-    const ttLink = '';
-    const xLink = '';
+    const igLink = 'https://www.instagram.com/';
+    const fbLink = 'https://www.facebook.com/';
+    const ttLink = 'https://www.tiktok.com/';
+    const xLink = 'https://x.com/';
 
 
     const handleOnSubmit = (e: React.FormEvent<HTMLFormElement> ) => {
         e.preventDefault();
-        console.log({email});
-        setEmail('');
-        toast.success("Bạn đã nhận được voucher giảm 15%", {
-            position: "top-right",
-        });
+        if(email.length > 0) {
+          console.log({email});
+          setEmail('');
+          toast.success("Bạn đã nhận được voucher giảm 15%", {
+              position: "top-right",
+          });
+        } else {
+          toast.error("Nhập Email để xác nhận", {
+              position: "top-right",
+          });
+        }
         
 
     }
   return (
     <footer className="w-full min-h-[300px] bg-black text-white  border-t-[2.5px] border-[#b3b3b3]">
       <div className="max-w-[1200px] h-full mx-auto pt-10 flex">
-        <ul className="w-1/5 h-[300px] px-3 text-sm">
+
+        <ul className="w-1/4 h-[300px] px-3 text-sm">
           <h1 className="py-2 text-2xl font-semibold">Theo dõi</h1>
           <li className="py-2 my-2">Giảm 15% cho đơn hàng đầu tiên</li>
           <li className="w-full h-[50px] ">
@@ -65,14 +72,14 @@ export default function Footer() {
             </form>
           </li>
         </ul>
-        <ul className="w-1/5 h-[300px] px-3 text-sm">
+        <ul className="w-1/4 h-[300px] px-3 text-sm">
           <h1 className="py-2 text-2xl font-semibold">Hỗ trợ</h1>
           <li className="py-2 flex gap-1">
             <span>
               <MdLocationPin size={20} />
             </span>
             <span className="font-semibold">
-                Khu Dây Thép,Đồng Đăng,TP.Lạng Sơn
+                Đồng Đăng,TP.Lạng Sơn
             </span>
             
           </li>
@@ -94,7 +101,7 @@ export default function Footer() {
             </span>
           </li>
         </ul>
-        <ul className="w-1/5 h-[300px] px-3 text-sm">
+        <ul className="w-1/4 h-[300px] px-3 text-sm">
           <h1 className="py-2 text-2xl font-semibold">Tài khoản</h1>
           <li className="py-2">Tài khoản của tôi</li>
           <li className="py-2">Chính sách bảo mật</li>
@@ -102,19 +109,12 @@ export default function Footer() {
           <li className="py-2">Giỏ hàng</li>
           <li className="py-2">Shop</li>
         </ul>
-        <ul className="w-1/5 h-[300px] px-3 text-sm">
-          <h1 className="py-2 text-2xl font-semibold">Liên hệ nhanh</h1>
-          <li className="py-2">null</li>
-          <li className="py-2">null</li>
-          <li className="py-2">null</li>
-          <li className="py-2">null</li>
-        </ul>
-        <ul className="w-1/5 h-[300px] px-3 text-sm">
+        <ul className="w-1/4 h-[300px] px-3 text-sm">
           <h1 className="py-2 text-2xl font-semibold">Cài đặt app</h1>
-          <li className="py-2">{" Tiết kiệm đến $3 khi tải App :))))"}</li>
-          <li className="py-2 flex items-center space-x-2">
+          <li className="py-2">{" Tiết kiệm đến 3$ khi tải App :))))"}</li>
+          <li className="py-2 flex items-center space-x-4">
             <Image src={qrAppURL} alt="ảnh QR" width={90} height={80} />
-            <div className="flex-col space-y-1">
+            <div className="flex-col  space-y-1">
               <Image src={logoAppURL} alt="logo app" width={110} height={30} />
               <Image src={nameAppURL} alt="name app" width={110} height={30} />
             </div>

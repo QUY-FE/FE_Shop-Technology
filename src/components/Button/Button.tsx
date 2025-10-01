@@ -22,12 +22,14 @@ export const CustomRightArrow = ({ onClick }: { onClick?: () => void }) => (
 
 
 export default function Button({
+  type='button',
   primary = false,
   text = "Thêm text",
   w = 225,
   h = 55,
   className = "",
 }: {
+  type?: 'button' | 'submit' | undefined | 'reset',
   primary?: boolean;
   text?: string;
   w?: number | string; // hỗ trợ số hoặc "100%"
@@ -43,15 +45,17 @@ export default function Button({
     <>
       {primary ? (
         <button
+          type={type}
           style={style}
-          className={`${className}bg-primary text-white rounded my-4 shadow cursor-pointer hover:bg-[#fd5151] hover:shadow-xl transition`}
+          className={`${className}bg-primary text-white rounded-md my-4 shadow cursor-pointer hover:bg-[#fd5151] hover:shadow-xl transition`}
         >
           {text}
         </button>
       ) : (
         <button
+          type={type}
           style={style}
-          className={`${className}border-2 border-colorBorder shadow cursor-pointer hover:shadow-xl`}
+          className={`${className}border-2 border-colorBorder rounded-md shadow cursor-pointer hover:shadow-xl`}
         >
           {text}
         </button>

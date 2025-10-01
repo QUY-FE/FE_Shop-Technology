@@ -1,45 +1,42 @@
-'use client'
-import Carousel from 'react-multi-carousel';
+"use client";
+import Carousel from "react-multi-carousel";
 
-import meetingImg from '#/assets/images/meeting.jpg'
-import womenAvatar from '#/assets/images/women_avatar.png'
-import menAvatar from '#/assets/images/men_avatar.jpg'
+import meetingImg from "#/assets/images/meeting.jpg";
+import womenAvatar from "#/assets/images/women_avatar.png";
+import menAvatar from "#/assets/images/men_avatar.jpg";
 
 import { FaInstagram } from "react-icons/fa6";
 import { FaFacebookSquare } from "react-icons/fa";
 import { AiFillTikTok } from "react-icons/ai";
 import { CiTwitter } from "react-icons/ci";
 
+import Image from "next/image";
+import Interest from "#/components/Interest";
+import { CustomLeftArrow, CustomRightArrow } from "#/components/Button/Button";
 
-import Image from 'next/image';
-import Interest from '#/components/Interest';
-import { CustomLeftArrow, CustomRightArrow } from '#/components/Button/Button';
 
 const staffList = [
   {
-    url: womenAvatar,
-    name: 'Hoàng Thị Ngọc Thư',
-    position: 'Trưởng Phòng Thiết Kế'
+    url: womenAvatar.src,
+    name: "Hoàng Thị Ngọc Thư",
+    position: "Trưởng phòng tiếp khách",
+    socialNetwork: {
+      fbUrl: "https://www.facebook.com/",
+      tiktokUrl: "https://www.tiktok.com/",
+      igUrl: "https://www.instagram.com/",
+      xUrl: "https://x.com/",
+    },
   },
   {
-    url: womenAvatar,
-    name: 'Nông Thị Ngọc Như',
-    position: 'Trưởng Phòng Kinh Doanh'
-  },
-  {
-    url: menAvatar,
-    name: 'Nguyễn Bỉnh Quý',
-    position: 'FE Developer'
-  },
-  {
-    url: womenAvatar,
-    name: 'Hứu Ngọc Nhu',
-    position: 'Phó Giám Đốc & đồng sáng lập công ty'
-  },
-  {
-    url: womenAvatar,
-    name: 'Hứu Minh Châu',
-    position: 'Tổng Giám Đốc & đồng sáng lập công ty'
+    url: menAvatar.src,
+    name: "Nguyễn Bỉnh Quý",
+    position: "Nhân viên phòng kỹ thuật",
+    socialNetwork: {
+      fbUrl: "https://www.facebook.com/",
+      tiktokUrl: "https://www.tiktok.com/",
+      igUrl: "https://www.instagram.com/",
+      xUrl: "https://x.com/",
+    },
   },
 ];
 
@@ -49,12 +46,14 @@ export default function About() {
       {/* Intro section */}
       <div className="mt-20 max-h-[600px] flex">
         <div className="w-1/2 max-h-[330px] pr-12">
-          <h1 className="text-4xl font-semibold mb-4">Câu truyện về chúng tôi</h1>
+          <h1 className="text-4xl font-semibold mb-4">
+            Câu truyện về chúng tôi
+          </h1>
           <p className="leading-8 text-black/80">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur,
-            nihil harum. Tempora itaque distinctio dicta rerum commodi, pariatur
-            officiis laudantium expedita nemo corrupti, excepturi consequatur
-            accusantium nostrum, debitis quia ullam.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Consequatur, nihil harum. Tempora itaque distinctio dicta rerum
+            commodi, pariatur officiis laudantium expedita nemo corrupti,
+            excepturi consequatur accusantium nostrum, debitis quia ullam.
           </p>
         </div>
         <div className="w-1/2 max-h-[330px] relative">
@@ -68,8 +67,8 @@ export default function About() {
       </div>
 
       {/* Staff carousel */}
-      <div className='mt-10'>
-        <h1 className='text-3xl font-bold'>Các thành viên</h1>
+      <div className="mt-10">
+        <h1 className="text-3xl font-bold">Các thành viên</h1>
       </div>
       <div className="w-full h-[600px] mt-20 relative">
         <Carousel
@@ -91,38 +90,70 @@ export default function About() {
           slidesToSlide={1}
           swipeable
           itemClass="px-4"
-          customLeftArrow={
-            <CustomLeftArrow />
-          }
-          customRightArrow={
-            <CustomRightArrow/>
-          }
+          customLeftArrow={<CustomLeftArrow />}
+          customRightArrow={<CustomRightArrow />}
         >
           {staffList.map((item, index) => (
             <article
-              className="max-w-sm h-[450px] mx-auto text-center bg-white shadow rounded-xl"
+              className="max-w-sm h-[460px] mx-auto my-4 text-center bg-white shadow-lg rounded-xl"
               key={index}
             >
               <Image
                 src={item.url}
-                alt="avatar"
+                alt={`avatar của ${item.name}`}
                 width={300}
                 height={350}
                 className="mx-auto rounded-full object-cover py-6"
               />
-              <h1 className="text-2xl font-semibold leading-[35px]">{item.name}</h1>
-              <p className="text-sm text-black/70 leading-[35px]">{item.position}</p>
+              <h1 className="text-2xl font-semibold leading-[35px]">
+                {item.name}
+              </h1>
+              <p className="text-sm text-black/70 leading-[35px]">
+                {item.position}
+              </p>
               <ul className="flex items-center justify-center gap-3 text-black/80 leading-[35px]">
-                <li><AiFillTikTok size={30} /></li>
-                <li><FaInstagram size={30} /></li>
-                <li><FaFacebookSquare size={30} /></li>
-                <li><CiTwitter size={30} /></li>
+                <li>
+                  <a
+                    href={item?.socialNetwork?.tiktokUrl}
+                    target="_blank"
+                    className="w-10 h-10 flex justify-center items-center rounded-full hover:bg-black/10 hover:scale-105  "
+                  >
+                    <AiFillTikTok size={30} />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={item?.socialNetwork?.igUrl}
+                    target="_blank"
+                    className="w-10 h-10 flex justify-center items-center rounded-full hover:bg-black/10 hover:scale-105  "
+                  >
+                    <FaInstagram size={30} />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={item?.socialNetwork?.fbUrl}
+                    target="_blank"
+                    className="w-10 h-10 flex justify-center items-center rounded-full hover:bg-black/10 hover:scale-105  "
+                  >
+                    <FaFacebookSquare size={30} />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={item?.socialNetwork?.xUrl}
+                    target="_blank"
+                    className="w-10 h-10 flex justify-center items-center rounded-full hover:bg-black/10 hover:scale-105  "
+                  >
+                    <CiTwitter size={30} />
+                  </a>
+                </li>
               </ul>
             </article>
           ))}
         </Carousel>
       </div>
-        {/* interest */}
+      {/* interest */}
       <Interest />
     </section>
   );

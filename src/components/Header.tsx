@@ -30,7 +30,7 @@ const navbarList = [
 ];
 export default function Header() {
   return (
-    <header>
+    <header id="Home">
       <Sales
         hasSales
         totalSales={47}
@@ -43,7 +43,7 @@ export default function Header() {
           {/* Logo */}
           <Link
             href="/"
-            className="w-6/12 lg:w-2/12 h-full leading-20 text-2xl text-center lg:text-left lg:text-2xl font-semibold"
+            className="w-6/12 lg:w-2/12 h-full flex items-center lg:justify-start md:justify-center text-2xl lg:text-left lg:text-2xl font-semibold"
           >
             Quynguyen
           </Link>

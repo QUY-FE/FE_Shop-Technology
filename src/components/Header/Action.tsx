@@ -39,24 +39,24 @@ export default function Action({currentUser = false}: {currentUser?: boolean}) {
 
   return (
     <section className="w-3/12 lg:w-5/12 h-full flex items-center justify-end gap-6">
-      <div className="bg-[#f5f5f5] hidden  rounded-md lg:flex items-center px-2">
+      <div className="bg-[#f5f5f5] hidden  rounded-md lg:flex items-center px-2 py-1">
         <input
           type="text"
           placeholder="What are you looking for?"
           className="w-[244px] h-[38px] px-2 outline-none bg-[#f5f5f5]" 
         />
 
-        <span className="text-black/70 px-2">
-          <FaSearch />
-        </span>
+        <button className="w-10 h-10 text-black/70 px-2 hover:bg-black/10 rounded-full active:bg-black/15">
+          <FaSearch className="mx-auto text-primary " size={20} />
+        </button>
       </div>
-      <Link href={currentUser ? '/my-cart' :'/sign-in'} className="w-12 h-12 flex items-center justify-center rounded-full hover:bg-black/10">
-        <FaShoppingCart className={`${pathname === '/my-cart'? 'text-red-500': ''} pb-1 transition`} size={28} />
+      <Link href={currentUser ? '/cart' :'/sign-in'} className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-black/10 active:bg-black/15">
+        <FaShoppingCart className={`${pathname === '/cart'? 'text-red-500': ''} pb-1 transition mx-auto`} size={22} />
       </Link>
       {
         currentUser ? (
-        <span className="block text-black text-center leading-[40px] relative w-[40px]  " onClick={() => setDropdown(!dropdown)}>
-            <FaUser size={22}/>
+        <button className="relative w-10 h-10 rounded-full  hover:bg-black/10 active:bg-black/5" onClick={() => setDropdown(!dropdown)}>
+            <FaUser size={20} className="mx-auto"/>
             {dropdown && (
             <>
                 {/* Overlay để đóng dropdown khi click ra ngoài */}
@@ -65,7 +65,7 @@ export default function Action({currentUser = false}: {currentUser?: boolean}) {
                 onClick={() => setDropdown(false)}
                 />
                 {/* Dropdown menu */}
-                <div className="w-screen lg:w-[180px] bg-gray-50 shadow-md absolute top-[50px] lg:top-[30px] right-0 rounded-md p-2 z-20">
+                <div className="w-screen lg:w-[180px] bg-white shadow-lg absolute top-[50px] lg:top-[45px] right-0 rounded-lg p-2 z-20 transition">
                 <ul>
                     {userMenu.map(item => (
                     <li
@@ -83,7 +83,7 @@ export default function Action({currentUser = false}: {currentUser?: boolean}) {
 
             </>
             )}
-        </span>
+        </button>
         ) : 
         null
       }
