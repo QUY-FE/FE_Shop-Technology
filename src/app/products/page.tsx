@@ -1,30 +1,64 @@
 "use client";
-
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import productURL from "#/assets/images/keyboard.jpg";
 
-import { FaStar } from "react-icons/fa";
+import { FaStar, FaAngleLeft, FaAngleRight } from "react-icons/fa";
+
+import Categories from "#/components/Categories";
+
+const products = [
+  {
+    slug: "ban-phim-co-k550-v4",
+    url: productURL.src,
+    title: "Bàn phím cơ K550 v4",
+    newPrice: 120,
+    oldPrice: 190,
+    star: 3,
+    countBuy: 36,
+    salePercent: 20,
+    category: 'gaming',
+  },
+  {
+    slug: "ban-phim-co-k550-v4",
+    url: productURL.src,
+    title: "Bàn phím cơ K550 v4",
+    newPrice: 120,
+    oldPrice: 190,
+    star: 3,
+    countBuy: 36,
+    salePercent: 20,
+    category: 'gaming',
+  },
+  {
+    slug: "ban-phim-co-k550-v4",
+    url: productURL.src,
+    title: "Bàn phím cơ K550 v4",
+    newPrice: 120,
+    oldPrice: 190,
+    star: 3,
+    countBuy: 36,
+    salePercent: 20,
+    category: 'gaming',
+  },
+  {
+    slug: "ban-phim-co-k550-v4",
+    url: productURL.src,
+    title: "Bàn phím cơ K550 v4",
+    newPrice: 120,
+    oldPrice: 190,
+    star: 3,
+    countBuy: 36,
+    salePercent: 20,
+    category: 'gaming',
+  },
+];
 
 const ITEMS_PER_PAGE = 8;
-export default function ProductList({
-  products = [],
-}: {
-  products?: {
-    slug: string,
-    url: string;
-    title: string;
-    newPrice: number;
-    oldPrice: number;
-    star: number;
-    countBuy: number;
-    salePercent: number;
-  }[];
-}) {
+export default function Page() {
   const [currentPage, setCurrentPage] = useState(1);
-
   const totalPages = Math.ceil(products.length / ITEMS_PER_PAGE);
-
   const paginatedProducts = products.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
     currentPage * ITEMS_PER_PAGE
@@ -32,19 +66,15 @@ export default function ProductList({
 
   return (
     <section className="w-full pb-10">
-      <div className="mb-10">
-        <p className="pl-4 mb-6 border-l-12 border-[#e34646] text-2xl rounded-md font-semibold">
-          Our Products
-        </p>
-        <h1 className="text-3xl font-semibold">Explore Our Products</h1>
-      </div>
+      <Categories />
+      <div className="my-8 border-t-2 border-t-colorBorder "></div>
 
       {/* Product Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:h-[800px]  sm:px-[2px]">
         {paginatedProducts.map((product, index) => (
           <article
-            className="relative group block w-[270px]  h-[370px] transition"
-            key={`product__${index}`}
+            className="relative group block w-[205px] h-[300px] md:w-[260px] md:h-[320px] lg:w-[270px] lg:h-[370px] transition"
+            key={`product__${index}`} 
           >
             <Link
               href={`/product/${product?.slug}`}
@@ -87,6 +117,14 @@ export default function ProductList({
 
       {/* Pagination */}
       <div className="flex justify-center mt-10 space-x-2">
+        <button
+          className={`${currentPage === 1 ? ' hidden ' : ' block '} px-3 py-2 rounded-md border`}
+          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+          disabled={currentPage === 1}
+        >
+          <FaAngleLeft size={22} />
+        </button>
+
         {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
           <button
             key={page}
@@ -100,6 +138,16 @@ export default function ProductList({
             {page}
           </button>
         ))}
+
+        <button
+          className={`${currentPage === 1 ? ' hidden ' : ' block '} px-3 py-2 rounded-md border`}
+          onClick={() =>
+            setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+          }
+          disabled={currentPage === totalPages}
+        >
+          <FaAngleRight size={22} />
+        </button>
       </div>
     </section>
   );

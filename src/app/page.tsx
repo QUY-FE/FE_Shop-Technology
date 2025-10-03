@@ -1,9 +1,9 @@
 'use client'
 import Banner from "#/components/Banner";
-import Categories from "#/components/Categories";
+
 import FlashSales from "#/components/FlashSales";
 import Interest from "#/components/Interest";
-import ProductList from "#/components/ProductList";
+
 
 import productURL from '#/assets/images/keyboard.jpg'
 
@@ -36,8 +36,6 @@ export default function Home() {
     <>
       <Banner />
       <FlashSales products={products} />
-      <Categories />
-      <ProductList products={products} />
       <Interest />
     </>
 

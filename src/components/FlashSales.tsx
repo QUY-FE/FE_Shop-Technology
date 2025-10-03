@@ -114,7 +114,9 @@ export default function FlashSales({
         </Carousel>
       </div>
       <div className="w-full min-h-[80px] flex items-center justify-center ">
-        <Button text="Xem thêm sản phẩm" primary w={234} h={56} />
+        <Link href="/products">
+          <Button text="Xem thêm sản phẩm" primary w={234} h={56} />
+        </Link>
       </div>
     </section>
   );
