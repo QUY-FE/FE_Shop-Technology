@@ -1,4 +1,4 @@
-# Tên dự án
+# Web bán hàng hiện đại
 > Website thương mại điện tử UI hiện đại, responsive, sử dụng Next.js 15, TailwindCSS v3 và nhiều thư viện tiện ích khác.
 
 ---
