@@ -205,12 +205,14 @@ export default function Product({
                 className="relative group block w-[205px] h-[300px] md:w-[260px] md:h-[320px] lg:w-[270px] lg:h-[370px] transition"
                 key={`product__${index}`}
               >
-                <Link
-                  href={`/product/${product?.slug}`}
-                  className="absolute inset-0 bg-black/15 text-white text-2xl font-semibold  hidden rounded-lg group-hover:flex items-center justify-center z-50"
-                >
-                  Xem Sản phẩm
+                <div className="absolute w-full  bottom-[80px]  text-white  hidden rounded-lg group-hover:flex items-center justify-between py-3 px-2 z-50">                
+                <Link href={`/cart`}>
+                  <Button text="Thêm vào giỏ hàng" w={125} h={56} />              
                 </Link>
+                <Link href={`/product/${product?.slug}`}>
+                  <Button text="Xem Sản phẩm" primary w={125} h={56} />
+                </Link>
+              </div>
                 <Image
                   src={product?.url}
                   alt={product?.title}

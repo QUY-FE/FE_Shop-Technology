@@ -127,7 +127,7 @@ export default function Cart() {
             </div>
 
             <div className="flex justify-center my-4">
-              <Link href="/cart/checkout">
+              <Link href="/product/checkout">
                 <Button primary w={218} h={56} text="Thanh toán" />
               </Link>
             </div>
