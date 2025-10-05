@@ -1,10 +1,6 @@
 'use client'
 import Banner from "#/components/Banner";
-
 import FlashSales from "#/components/FlashSales";
-import Interest from "#/components/Interest";
-
-
 import productURL from '#/assets/images/keyboard.jpg'
 
 const products = [
@@ -36,7 +32,6 @@ export default function Home() {
     <>
       <Banner />
       <FlashSales products={products} />
-      <Interest />
     </>
 
   );

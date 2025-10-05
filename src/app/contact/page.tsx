@@ -28,7 +28,7 @@ export default function Contact() {
 
 
   return (
-    <section className="h-screen flex justify-center gap-6 mt-20">
+    <section className="flex justify-center gap-6 mt-20">
       {/* Thông tin liên hệ */}
       <div className="w-4/12 h-[500px] shadow-2xl rounded-2xl px-8 py-12 flex flex-col justify-between">
         <div>

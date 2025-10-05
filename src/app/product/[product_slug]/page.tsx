@@ -119,9 +119,9 @@ export default function Product({
               <FaStar key={i} color={i < product.star ? "#ffad33" : "gray"} />
             ))}
             <span className="text-gray-500 text-sm">
-              ({product.countBuy} Reviews)
+              ({product.countBuy} Đánh giá)
             </span>
-            <span className="text-green-600 font-semibold ml-2">In Stock</span>
+            <span className="text-green-600 font-semibold ml-2">Còn hàng</span>
           </div>
           <div className="text-2xl font-bold text-primary mb-2">
             ${product.newPrice}
@@ -156,13 +156,13 @@ export default function Product({
           {/* Thông tin giao hàng */}
           <div className="border rounded p-4 mb-2 flex flex-col gap-2">
             <div className="flex items-center gap-2">
-              <span className="font-semibold flex items-center gap-3"><FaTruckFast size={25} className="text-primary" /> Free Delivery</span>
+              <span className="font-semibold flex items-center gap-3"><FaTruckFast size={25} className="text-primary" /> Miễn phí ship</span>
               <span className="text-gray-500 text-sm">
                 Nhập địa chỉ để đơn hàng đến nhanh nhất
               </span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="font-semibold flex items-center gap-3"><FaRotate size={25} className="text-primary"/> Return Delivery</span>
+              <span className="font-semibold flex items-center gap-3"><FaRotate size={25} className="text-primary"/> Chính sách đổi trả</span>
               <span className="text-gray-500 text-sm">
                 Hoàn hàng trong vòng 30 ngày
               </span>

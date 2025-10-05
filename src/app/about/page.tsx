@@ -11,7 +11,7 @@ import { AiFillTikTok } from "react-icons/ai";
 import { CiTwitter } from "react-icons/ci";
 
 import Image from "next/image";
-import Interest from "#/components/Interest";
+
 import { CustomLeftArrow, CustomRightArrow } from "#/components/Button/Button";
 
 
@@ -153,8 +153,6 @@ export default function About() {
           ))}
         </Carousel>
       </div>
-      {/* interest */}
-      <Interest />
     </section>
   );
 }

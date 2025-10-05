@@ -3,7 +3,7 @@ import { ToastContainer } from "react-toastify";
 
 //  import components
 import Header from "#/components/Header";
-import Footer from "#/components/Footer/Footer";
+import Footer from "#/components/Footer";
 
 // import file css
 import "react-multi-carousel/lib/styles.css";
@@ -39,7 +39,7 @@ export default function RootLayout({
           theme="light"
         />
         <Header />
-        <div className="w-full min-h-screen ">
+        <div className="w-full ">
           <main className="max-w-[1200px] mx-auto">{children}</main>
         </div>
         <Footer />
