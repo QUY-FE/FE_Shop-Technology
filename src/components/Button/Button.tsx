@@ -5,7 +5,7 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 export const CustomLeftArrow = ({ onClick }: { onClick?: () => void }) => (
   <button
     onClick={onClick}
-    className="absolute left-2 top-1/2 -translate-y-1/2 bg-white shadow-md p-2 rounded-full hover:bg-gray-100"
+    className="absolute left-0 top-1/2 -translate-y-1/2 bg-black shadow-md p-2 rounded-full hover:scale-110"
   >
     <FaChevronLeft className="text-red-500 text-xl" />
   </button>
@@ -14,7 +14,7 @@ export const CustomLeftArrow = ({ onClick }: { onClick?: () => void }) => (
 export const CustomRightArrow = ({ onClick }: { onClick?: () => void }) => (
   <button
     onClick={onClick}
-    className="absolute right-2 top-1/2 -translate-y-1/2 bg-white shadow-md p-2 rounded-full hover:bg-gray-100"
+    className="absolute right-0 top-1/2 -translate-y-1/2 bg-black shadow-md p-2 rounded-full hover:scale-110"
   >
     <FaChevronRight className="text-red-500 text-xl" />
   </button>
