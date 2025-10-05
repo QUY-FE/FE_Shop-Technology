@@ -6,7 +6,7 @@ import Navbar from "./Header/Navbar";
 import Action from "./Header/Action";
 import NavbarMobile from "./Header/NavbarMobile";
 
-const navbarList = [
+const navbarListDefault = [
   {
     id: 1,
     name: "Home",
@@ -28,7 +28,31 @@ const navbarList = [
     href: "/sign-in",
   },
 ];
+const navbarListWithCurrentUser = [
+  {
+    id: 1,
+    name: "Home",
+    href: "/",
+  },
+  {
+    id: 4,
+    name: "Products",
+    href: "/products",
+  },
+  {
+    id: 2,
+    name: "About",
+    href: "/about",
+  },
+  {
+    id: 3,
+    name: "Contact",
+    href: "/contact",
+  },
+];
 export default function Header() {
+  // Trường hợp có user
+  const currentUser = true;
   return (
     <header id="Home">
       <Sales
@@ -39,7 +63,7 @@ export default function Header() {
       <div className="border-b border-colorBorder">
         <div className="max-w-[1200px] h-[80px] mx-auto  flex items-center ">
           {/* Navbar mobile */}
-          <NavbarMobile list={navbarList} />
+          <NavbarMobile list={currentUser ? navbarListWithCurrentUser :  navbarListDefault} />
           {/* Logo */}
           <Link
             href="/"
@@ -48,9 +72,9 @@ export default function Header() {
             Quynguyen
           </Link>
           {/* navbar */}
-          <Navbar list={navbarList} />
+          <Navbar list={currentUser ? navbarListWithCurrentUser :  navbarListDefault} />
           {/* action */}
-          <Action currentUser />
+          <Action currentUser={currentUser} />
         </div>
       </div>
     </header>

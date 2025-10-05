@@ -1,10 +1,8 @@
 'use client'
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { FaShoppingCart,FaSearch,FaUser,FaShoppingBag } from "react-icons/fa";
+import { FaShoppingCart,FaSearch,FaShoppingBag,FaRegUserCircle } from "react-icons/fa";
 import { IoMdSettings,IoMdExit } from "react-icons/io";
-
 
 const userMenu = [
     {
@@ -19,23 +17,10 @@ const userMenu = [
         icon: <FaShoppingBag />,
         href: '/MyOrders'
     },
-    {
-        id: 3,
-        text: 'Setting',
-        icon: <IoMdSettings />,
-        href: '/settings'
-    },
-    {
-        id: 4,
-        text: 'Logout',
-        icon: <IoMdExit />,
-        href: '/settings'
-    },
 ]
 
-export default function Action({currentUser = false}: {currentUser?: boolean}) {
+export default function Action({currentUser}: {currentUser?: boolean}) {
     const [dropdown, setDropdown] = useState<boolean>(false);
-    const pathname = usePathname();
 
   return (
     <section className="w-3/12 lg:w-5/12 h-full flex items-center justify-end gap-6">
@@ -51,12 +36,12 @@ export default function Action({currentUser = false}: {currentUser?: boolean}) {
         </button>
       </div>
       <Link href={currentUser ? '/cart' :'/sign-in'} className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-black/10 active:bg-black/15">
-        <FaShoppingCart className={`${pathname === '/cart'? 'text-red-500': ''} pb-1 transition mx-auto`} size={22} />
+        <FaShoppingCart className="pb-1 transition mx-auto" size={25} />
       </Link>
       {
         currentUser ? (
         <button className="relative w-10 h-10 rounded-full  hover:bg-black/10 active:bg-black/5" onClick={() => setDropdown(!dropdown)}>
-            <FaUser size={20} className="mx-auto"/>
+            <FaRegUserCircle size={25} className="mx-auto"/>
             {dropdown && (
             <>
                 {/* Overlay để đóng dropdown khi click ra ngoài */}
@@ -65,19 +50,24 @@ export default function Action({currentUser = false}: {currentUser?: boolean}) {
                 onClick={() => setDropdown(false)}
                 />
                 {/* Dropdown menu */}
-                <div className="w-screen lg:w-[180px] bg-white shadow-lg absolute top-[50px] lg:top-[45px] right-0 rounded-lg p-2 z-20 transition">
+                <div className="w-screen lg:w-[300px] bg-white shadow-lg absolute top-[50px] lg:top-[45px] right-0 rounded-md z-20 transition">
                 <ul>
                     {userMenu.map(item => (
                     <li
-                        className="p-2 text-lg font-bold cursor-pointer"
                         key={item.id}
                     >
-                        <Link href={item.href} className="w-full h-full flex items-center gap-4">
-                            <span>{item.icon}</span>
+                        <Link href={item.href} className="py-2 w-full h-full flex items-center justify-between px-16 rounded-md hover:bg-black/10">
                             <p>{item.text}</p>
+                            <span>{item.icon}</span>
                         </Link>
                     </li>
                     ))}
+                    <li className="border-colorBorder border-t-2">
+                      <button className="py-2 w-full h-full flex items-center justify-between px-16 rounded-md hover:bg-black/10">
+                            <p>Logout</p>
+                            <span><IoMdExit /></span>
+                      </button>
+                    </li>
                 </ul>
                 </div>
 
