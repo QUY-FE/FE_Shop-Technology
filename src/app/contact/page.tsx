@@ -6,26 +6,29 @@ import { TbMail } from "react-icons/tb";
 import { toast } from "react-toastify";
 
 export default function Contact() {
-    const [email, setEmail] = useState('');
-    const [username, setUsername] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
-    const [description, setDescription] = useState('');
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement> ) => {
-        e.preventDefault();
-        if( email.length || username.length ||  phoneNumber.length  || description.length > 0) {
-            console.log({
-                email,
-                username,
-                phoneNumber,
-                description,
-            })
-            toast.success('Chúng tôi sẽ sớm phản hồi lại');
-        } else {
-            toast.error('Bạn chưa nhập đầy đủ thông tin vào form')
-        }
-
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [description, setDescription] = useState("");
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (
+      email.length ||
+      username.length ||
+      phoneNumber.length ||
+      description.length > 0
+    ) {
+      console.log({
+        email,
+        username,
+        phoneNumber,
+        description,
+      });
+      toast.success("Chúng tôi sẽ sớm phản hồi lại");
+    } else {
+      toast.error("Bạn chưa nhập đầy đủ thông tin vào form");
     }
-
+  };
 
   return (
     <section className="flex justify-center gap-6 mt-20">
@@ -38,7 +41,9 @@ export default function Contact() {
             </span>
             Gọi cho chúng tôi
           </h1>
-          <p className="mb-2 text-sm">Chúng tôi luôn nghe 24/7 và 7 ngày một tuần</p>
+          <p className="mb-2 text-sm">
+            Chúng tôi luôn nghe 24/7 và 7 ngày một tuần
+          </p>
           <p className="mb-2">Số điện thoại: +84366367588</p>
         </div>
         <div>
@@ -48,7 +53,9 @@ export default function Contact() {
             </span>
             Gửi tin nhắn
           </h1>
-          <p className="mb-2 text-sm">Chúng tôi sẽ kiểm tra tin và phản hồi lại trong 24h</p>
+          <p className="mb-2 text-sm">
+            Chúng tôi sẽ kiểm tra tin và phản hồi lại trong 24h
+          </p>
           <p className="mb-2">Email: helpme@gmail.com</p>
           <span>or</span>
           <p className="mb-2">Email: needtohelp@gmail.com</p>
@@ -57,7 +64,7 @@ export default function Contact() {
       {/* Form liên hệ */}
       <form
         method="post"
-        onSubmit={e => handleSubmit(e)}
+        onSubmit={(e) => handleSubmit(e)}
         className="w-8/12 h-[500px] shadow-2xl rounded-2xl px-8 py-10 flex flex-col"
       >
         <h1 className="text-2xl mb-4 font-semibold text-black/90">
@@ -65,45 +72,53 @@ export default function Contact() {
         </h1>
         <ul className="flex items-center justify-between gap-4 mb-6">
           <li className="w-[200px] rounded-lg">
-            <label htmlFor="email" className="text-sm font-semibold text-black/80">Nhập email</label>
+            <label
+              htmlFor="email"
+              className="text-sm font-semibold text-black/80"
+            >
+              Nhập email
+            </label>
             <input
               type="email"
               name="email"
               value={email}
-              onChange={e => setEmail(e.target.value)}
-              placeholder="vd:user1@gmail.com"
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full h-full pl-3 py-3 font-semibold outline-none rounded-lg bg-black/5"
             />
           </li>
           <li className="w-[200px] rounded-lg">
-            <label htmlFor="" className="text-sm font-semibold text-black/80">Nhập họ tên</label>
+            <label htmlFor="" className="text-sm font-semibold text-black/80">
+              Nhập họ tên
+            </label>
             <input
               type="text"
               name="username"
               value={username}
-              onChange={e => setUsername(e.target.value)}
-              placeholder="Nguyễn văn A"
+              onChange={(e) => setUsername(e.target.value)}
               className="w-full h-full pl-3 py-3 font-semibold outline-none rounded-lg bg-black/5"
             />
           </li>
           <li className="w-[200px] rounded-lg">
-            <label htmlFor="" className="text-sm font-semibold text-black/80">Nhập số điện thoại</label>
+            <label htmlFor="" className="text-sm font-semibold text-black/80">
+              Nhập số điện thoại
+            </label>
             <input
               type="text"
               name="number"
               value={phoneNumber}
-              onChange={e => setPhoneNumber(e.target.value)}
-              placeholder="03xx97xx78x9"
+              onChange={(e) => setPhoneNumber(e.target.value)}
               className="w-full h-full pl-3 py-3 font-semibold outline-none rounded-lg bg-black/5"
             />
           </li>
         </ul>
         <div className="w-full h-[200px] mb-6 rounded-lg">
-          <label htmlFor="" className="text-sm font-semibold text-black/80">Nhập nội dung</label>
+          <label htmlFor="" className="text-sm font-semibold text-black/80">
+            Nhập nội dung
+          </label>
           <textarea
             name="description"
             value={description}
-            onChange={e => setDescription(e.target.value)}
+            onChange={(e) => setDescription(e.target.value)}
             placeholder="Nội dung cần liên hệ"
             className="w-full h-full p-3 outline-none resize-none rounded-lg bg-black/5"
           />

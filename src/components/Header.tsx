@@ -63,16 +63,20 @@ export default function Header() {
       <div className="border-b border-colorBorder">
         <div className="max-w-[1200px] h-[80px] mx-auto  flex items-center ">
           {/* Navbar mobile */}
-          <NavbarMobile list={currentUser ? navbarListWithCurrentUser :  navbarListDefault} />
+          <NavbarMobile
+            list={currentUser ? navbarListWithCurrentUser : navbarListDefault}
+          />
           {/* Logo */}
           <Link
             href="/"
-            className="w-6/12 lg:w-2/12 h-full flex items-center lg:justify-start md:justify-center text-2xl lg:text-left lg:text-2xl font-semibold"
+            className="w-6/12 lg:w-2/12 h-full flex items-center lg:justify-start justify-center text-2xl lg:text-left lg:text-2xl font-semibold"
           >
-            Quynguyen
+            Quynguyen Store
           </Link>
           {/* navbar */}
-          <Navbar list={currentUser ? navbarListWithCurrentUser :  navbarListDefault} />
+          <Navbar
+            list={currentUser ? navbarListWithCurrentUser : navbarListDefault}
+          />
           {/* action */}
           <Action currentUser={currentUser} />
         </div>

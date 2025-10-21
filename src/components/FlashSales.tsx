@@ -3,45 +3,68 @@ import Image from "next/image";
 import { FaStar } from "react-icons/fa";
 import Link from "next/link";
 import Carousel from "react-multi-carousel";
-import Button, { CustomLeftArrow, CustomRightArrow } from "./Button/Button";
+import Button, { CustomLeftArrow, CustomRightArrow } from "./Button/Button"; // Giữ nguyên import Button của bạn
+import { useProducts } from "#/context/productsProvider";
 
-export default function FlashSales({
-  products = [],
-}: {
-  products?: {
-    slug: string;
-    url: string;
-    title: string;
-    newPrice: number;
-    oldPrice: number;
-    star: number;
-    countBuy: number;
-    salePercent: number;
-  }[];
-}) {
+export default function FlashSales() {
+  // Dữ liệu mẫu cho đồng hồ đếm ngược (bạn sẽ thay bằng state)
+  const countdown = { days: "03", hours: "23", minutes: "19", secs: "56" };
+  const { data } = useProducts();
   return (
-    <section className="w-full border-b-1 border-[#b3b3b3]">
-      <p className="pl-4 mb-6 border-l-12 border-[#e34646] text-2xl rounded-md font-semibold">
-        Todays
-      </p>
-      <div className="flex items-center justify-between mb-8">
-        <h1 className="w-2/6 text-4xl font-semibold">Flash Sales</h1>
-        <div className="w-4/6 flex items-center justify-end gap-6 ">
-          <h1>
-            Ngày: <span>03</span>
-          </h1>
-          <h1>
-            Giờ: <span>03</span>
-          </h1>
-          <h1>
-            Phút: <span>03</span>
-          </h1>
-          <h1>
-            Giây: <span>03</span>
-          </h1>
+    // Thêm padding dọc và border-b gọn gàng hơn
+    <section className="w-full border-b border-gray-200 py-12">
+      {/* === PHẦN HEADER === */}
+      {/* 1. Thiết kế lại "Todays" */}
+      <div className="flex items-center gap-4 mb-5">
+        <div className="w-5 h-10 bg-[#e34646] rounded"></div>
+        <p className="text-[#e34646] text-lg font-semibold">Todays</p>
+      </div>
+
+      {/* 2. Thiết kế lại "Flash Sales" và Đồng hồ đếm ngược */}
+      <div className="flex flex-col lg:flex-row items-baseline justify-between mb-8 gap-6">
+        <h1 className="text-4xl font-semibold flex-shrink-0">Flash Sales</h1>
+
+        {/* Đồng hồ đếm ngược kiểu "Kard" */}
+        <div className="flex items-end gap-3 lg:gap-5">
+          {/* Days */}
+          <div className="flex flex-col items-center">
+            <span className="text-xs font-medium text-gray-600">Days</span>
+            <span className="font-bold text-3xl text-gray-900">
+              {countdown.days}
+            </span>
+          </div>
+          <span className="text-[#e34646] text-3xl font-bold pb-1">:</span>
+
+          {/* Hours */}
+          <div className="flex flex-col items-center">
+            <span className="text-xs font-medium text-gray-600">Hours</span>
+            <span className="font-bold text-3xl text-gray-900">
+              {countdown.hours}
+            </span>
+          </div>
+          <span className="text-[#e34646] text-3xl font-bold pb-1">:</span>
+
+          {/* Minutes */}
+          <div className="flex flex-col items-center">
+            <span className="text-xs font-medium text-gray-600">Minutes</span>
+            <span className="font-bold text-3xl text-gray-900">
+              {countdown.minutes}
+            </span>
+          </div>
+          <span className="text-[#e34646] text-3xl font-bold pb-1">:</span>
+
+          {/* Seconds */}
+          <div className="flex flex-col items-center">
+            <span className="text-xs font-medium text-gray-600">Seconds</span>
+            <span className="font-bold text-3xl text-gray-900">
+              {countdown.secs}
+            </span>
+          </div>
         </div>
       </div>
-      <div className="w-full min-h-[400px]">
+
+      {/* === PHẦN CAROUSEL === */}
+      <div className="w-full">
         <Carousel
           // autoPlay
           autoPlaySpeed={3000}
@@ -62,61 +85,95 @@ export default function FlashSales({
           rewind
           slidesToSlide={1}
           swipeable
-          itemClass="px-2"
+          itemClass="px-2" // Giữ nguyên khoảng cách
           customLeftArrow={<CustomLeftArrow />}
           customRightArrow={<CustomRightArrow />}
         >
-          {products.map((product, index) => (
+          {data.map((product, index) => (
+            // === PHẦN CARD SẢN PHẨM ===
+            // Bỏ w, h cố định, thêm shadow và transition
             <article
-              className="relative group block w-[270px] h-[370px] transition"
+              className="block w-full rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
               key={`product__${index}`}
             >
-              <div className="absolute w-full  bottom-[80px]  text-white  hidden rounded-lg group-hover:flex items-center justify-between py-3 px-2 z-50">                
-                <Link href={`/cart`}>
-                  <Button text="Thêm vào giỏ hàng" w={125} h={56} />              
-                </Link>
-                <Link href={`/product/${product?.slug}`}>
-                  <Button text="Xem Sản phẩm" primary w={125} h={56} />
-                </Link>
+              {/* 1. Phần hình ảnh (relative group) */}
+              <div className="relative group w-full h-[250px] bg-gray-100 rounded-t-lg overflow-hidden">
+                <Image
+                  src={product?.url}
+                  alt={product?.title}
+                  layout="fill" // Dùng layout fill để lấp đầy div
+                  objectFit="cover" // Đảm bảo ảnh cover đẹp
+                  className="transition-transform duration-300 group-hover:scale-105" // Zoom nhẹ khi hover
+                />
+
+                {/* Sale Badge */}
+                <span className="absolute top-4 left-4 w-auto px-3 h-[27px] bg-[#e34646] text-white rounded text-sm flex items-center justify-center font-semibold">
+                  -{product?.salePercent}%
+                </span>
+
+                {/* 2. Nút bấm hover (thay thế Button component của bạn bằng Link) */}
+                {/* Hiệu ứng: Trượt từ dưới lên và mờ dần (thay vì 2 nút to) */}
+                <div className="absolute bottom-0 left-0 w-full p-2 flex gap-2 opacity-0 group-hover:opacity-100 translate-y-full group-hover:translate-y-0 transition-all duration-300">
+                  <Link
+                    href={`/cart`}
+                    className="flex-1 bg-white text-black text-center py-2.5 rounded-md text-sm font-medium hover:bg-gray-200 transition-colors"
+                  >
+                    Thêm vào giỏ
+                  </Link>
+                  <Link
+                    href={`/product/${product?.slug}`}
+                    className="flex-1 bg-[#e34646] text-white text-center py-2.5 rounded-md text-sm font-medium hover:bg-red-700 transition-colors"
+                  >
+                    Xem sản phẩm
+                  </Link>
+                </div>
               </div>
-              <Image
-                src={product?.url}
-                alt={product?.title}
-                width={270}
-                height={250}
-                className="relative object-cover rounded-lg shadow-md"
-              />
-              <span className="absolute top-4 left-3 w-[55px] h-[27px] bg-[#e34646] text-white rounded text-md text-center font-semibold">
-                -{product?.salePercent}%
-              </span>
-              <h1 className="w-full h-[40px] font-medium leading-[40px]">
-                {product?.title}
-              </h1>
-              <div className="flex items-center gap-3">
-                <p className="h-[30px] text-[#e34646] text-lg font-medium leading-[30px]">
-                  ${product?.newPrice}
-                </p>
-                <p className="h-[30px] leading-[30px] font-medium text-sm italic line-through text-black/60">
-                  ${product?.oldPrice}
-                </p>
-              </div>
-              <div className="flex items-center h-[30px] leading-[30px]">
-                {[...Array(5)].map((_, i) => (
-                  <FaStar
-                    key={i}
-                    color={i < product.star ? "#ffad33" : "gray"}
-                  />
-                ))}
-                <p className="px-4 text-black/70 font-medium">
-                  ({product?.countBuy})
-                </p>
+
+              {/* 3. Phần Text (Thêm padding) */}
+              <div className="p-4 bg-white rounded-b-lg">
+                {/* Bỏ h cố định, dùng truncate (cắt ngắn) */}
+                <h1
+                  className="font-medium text-lg truncate mb-2"
+                  title={product?.title}
+                >
+                  {product?.title}
+                </h1>
+
+                {/* Bỏ h cố định, thêm mb-2 */}
+                <div className="flex items-center gap-3 mb-2">
+                  <p className="text-[#e34646] text-lg font-semibold">
+                    ${product?.newPrice}
+                  </p>
+                  <p className="font-medium text-sm italic line-through text-gray-500">
+                    ${product?.oldPrice}
+                  </p>
+                </div>
+
+                {/* Bỏ h cố định, chỉnh lại spacing */}
+                <div className="flex items-center">
+                  <div className="flex items-center gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <FaStar
+                        key={i}
+                        color={i < product.star ? "#ffad33" : "#e0e0e0"} // Dùng màu xám nhạt cho sao rỗng
+                      />
+                    ))}
+                  </div>
+                  <p className="ml-3 text-sm text-gray-500 font-medium">
+                    ({product?.countBuy})
+                  </p>
+                </div>
               </div>
             </article>
           ))}
         </Carousel>
       </div>
-      <div className="w-full min-h-[80px] flex items-center justify-center ">
+
+      {/* === PHẦN NÚT XEM THÊM === */}
+      {/* Bỏ min-h, dùng padding py-10 */}
+      <div className="w-full flex items-center justify-center py-10">
         <Link href="/products">
+          {/* Giữ nguyên Button component của bạn ở đây */}
           <Button text="Xem thêm sản phẩm" primary w={234} h={56} />
         </Link>
       </div>

@@ -1,6 +1,6 @@
 "use client";
-// import Link from "next/link";
-import { useState } from "react";
+// 1. Import IconType để gõ cho icon
+import { IconType } from "react-icons";
 import { MdPhoneIphone } from "react-icons/md";
 import { CiLaptop } from "react-icons/ci";
 import { FaHeadphonesAlt } from "react-icons/fa";
@@ -11,46 +11,35 @@ import { TbHorseToy } from "react-icons/tb";
 import Carousel from "react-multi-carousel";
 import { CustomLeftArrow, CustomRightArrow } from "./Button/Button";
 
-const categoriesList = [
-  {
-    href: "#",
-    title: "Phones",
-    icon: MdPhoneIphone,
-  },
-  {
-    href: "#",
-    title: "Laptops",
-    icon: CiLaptop,
-  },
-  {
-    href: "#",
-    title: "headphones",
-    icon: FaHeadphonesAlt,
-  },
-  {
-    href: "#",
-    title: "camera",
-    icon: CiCamera,
-  },
-  {
-    href: "#",
-    title: "gaming",
-    icon: IoGameControllerOutline,
-  },
-  {
-    href: "#",
-    title: "Computer",
-    icon: FaComputer,
-  },
-  {
-    href: "#",
-    title: "toys",
-    icon: TbHorseToy,
-  },
+// 2. (Nên làm) Định nghĩa type cho một category item
+interface CategoryItem {
+  href: string;
+  title: string;
+  icon: IconType; // Sử dụng IconType
+}
+
+// Gán type cho mảng
+const categoriesList: CategoryItem[] = [
+  { href: "#", title: "Phones", icon: MdPhoneIphone },
+  { href: "#", title: "Laptops", icon: CiLaptop },
+  { href: "#", title: "headphones", icon: FaHeadphonesAlt },
+  { href: "#", title: "camera", icon: CiCamera },
+  { href: "#", title: "gaming", icon: IoGameControllerOutline },
+  { href: "#", title: "Computer", icon: FaComputer },
+  { href: "#", title: "toys", icon: TbHorseToy },
 ];
 
-export default function Categories() {
-  const [isActive, setIsActive] = useState("Phones");
+// 3. Định nghĩa Props cho component này
+interface Props {
+  selectedCategory: string;
+  onCategoryChange: (categoryTitle: string) => void;
+}
+
+// 4. Áp dụng Props và gỡ bỏ useState nội bộ
+export default function Categories({
+  selectedCategory,
+  onCategoryChange,
+}: Props) {
   return (
     <section className="my-10">
       <div className="mb-8">
@@ -59,11 +48,12 @@ export default function Categories() {
       <div className="max-w-[1200px]">
         <div className="w-full">
           <Carousel
+            // ... (props của Carousel giữ nguyên) ...
             arrows
             additionalTransfrom={0}
             centerMode={false}
             containerClass="carousel-container"
-            draggable          
+            draggable
             keyBoardControl
             minimumTouchDrag={80}
             pauseOnHover
@@ -83,11 +73,13 @@ export default function Categories() {
               <article
                 key={index}
                 className={
-                  isActive === category.title
+                  // 5. Dùng prop 'selectedCategory'
+                  selectedCategory === category.title
                     ? "categories_card_active"
                     : "categories_card_default"
                 }
-                onClick={() => setIsActive(category.title)}
+                // 6. Gọi hàm 'onCategoryChange' từ prop
+                onClick={() => onCategoryChange(category.title)}
               >
                 <div className="w-full h-2/3 ">
                   <category.icon
@@ -103,7 +95,7 @@ export default function Categories() {
               </article>
             ))}
           </Carousel>
-        </div> 
+        </div>
       </div>
     </section>
   );
