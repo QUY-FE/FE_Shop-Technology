@@ -67,12 +67,15 @@ export default function Header() {
             list={currentUser ? navbarListWithCurrentUser : navbarListDefault}
           />
           {/* Logo */}
-          <Link
-            href="/"
-            className="w-6/12 lg:w-2/12 h-full flex items-center lg:justify-start justify-center text-2xl lg:text-left lg:text-2xl font-semibold"
-          >
-            Quynguyen Store
-          </Link>
+          <div className="w-6/12 lg:w-1/12 h-full  flex items-center lg:justify-start justify-center text-2xl lg:text-left lg:text-2xl font-semibold">
+            <Link
+              href="/"
+              className="block px-4 py-3
+              rounded-xl bg-gradient-to-r from-red-400 to-orange-400 text-white"
+            >
+              <span>Qn</span>
+            </Link>
+          </div>
           {/* navbar */}
           <Navbar
             list={currentUser ? navbarListWithCurrentUser : navbarListDefault}

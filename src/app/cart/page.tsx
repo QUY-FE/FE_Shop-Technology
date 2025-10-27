@@ -95,7 +95,9 @@ export default function Cart() {
             className=" flex items-center gap-4"
             onSubmit={handleSumbit}
           >
-            <label htmlFor="checkVoucher" className="font-semibold">Nhập mã phiếu:</label>
+            <label htmlFor="checkVoucher" className="font-semibold">
+              Nhập mã phiếu:
+            </label>
             <input
               type="text"
               placeholder="VD giam19"
@@ -127,7 +129,7 @@ export default function Cart() {
             </div>
 
             <div className="flex justify-center my-4">
-              <Link href="/product/checkout">
+              <Link href="/checkout">
                 <Button primary w={218} h={56} text="Thanh toán" />
               </Link>
             </div>

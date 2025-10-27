@@ -54,8 +54,9 @@ export default function Page() {
         // Nếu CÓ, hiển thị lưới sản phẩm
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {paginatedProducts.map((product, index) => (
-            <article
-              className="block w-full h-auto bg-white rounded-lg shadow-md overflow-hidden transition-shadow hover:shadow-xl duration-300"
+            <Link
+              href={`/products/${product?.slug}`}
+              className="relative block w-full h-auto bg-white rounded-lg shadow-md overflow-hidden transition-shadow hover:shadow-xl duration-300 hover:-top-[3px]"
               key={`product__${product.slug}_${index}`}
             >
               {/* 1. Image Area */}
@@ -67,14 +68,7 @@ export default function Page() {
                   objectFit="cover"
                   className="relative transition-transform duration-300 group-hover:scale-105"
                 />
-                <div className="absolute w-full bottom-2 left-0 px-2 text-white flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 z-10">
-                  <Link href={`/cart`}>
-                    <Button text="Thêm vào giỏ hàng" w={125} h={56} />
-                  </Link>
-                  <Link href={`/product/${product?.slug}`}>
-                    <Button text="Xem Sản phẩm" primary w={125} h={56} />
-                  </Link>
-                </div>
+
                 <span className="absolute top-3 left-3 w-auto h-[27px] px-3 flex items-center justify-center bg-[#e34646] text-white rounded text-sm font-semibold">
                   -{product?.salePercent}%
                 </span>
@@ -109,7 +103,7 @@ export default function Page() {
                   </p>
                 </div>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
       ) : (

@@ -14,19 +14,7 @@ import Image from "next/image";
 
 import { CustomLeftArrow, CustomRightArrow } from "#/components/Button/Button";
 
-
 const staffList = [
-  {
-    url: womenAvatar.src,
-    name: "Hoàng Thị Ngọc Thư",
-    position: "Trưởng phòng tiếp khách",
-    socialNetwork: {
-      fbUrl: "https://www.facebook.com/",
-      tiktokUrl: "https://www.tiktok.com/",
-      igUrl: "https://www.instagram.com/",
-      xUrl: "https://x.com/",
-    },
-  },
   {
     url: menAvatar.src,
     name: "Nguyễn Bỉnh Quý",

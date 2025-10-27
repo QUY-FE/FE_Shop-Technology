@@ -44,8 +44,8 @@ export default function Footer() {
   };
   return (
     <>
-      <div className="max-w-screen-xl mx-auto max-h-[400px] mt-10 flex gap-4 bg-white border-b-[2.5px] border-colorBorder">
-        <div className="w-1/3 p-4 text-center">
+      <div className="max-w-screen-xl mx-auto  mt-10 flex-col lg:flex gap-4  border-b-[2.5px] border-colorBorder">
+        <div className="w-full lg:w-1/3 p-4 text-center">
           <p className="w-[60px] h-[60px] flex items-center justify-center bg-black/25 rounded-full mx-auto mb-4">
             <span className="w-[45px] h-[45px] flex items-center justify-center bg-black/90 text-white rounded-full">
               <FaHeadphonesAlt size={25} />
@@ -56,7 +56,7 @@ export default function Footer() {
             Chúng tôi luôn luôn lắng nghe và tư vấn khi bạn gọi
           </p>
         </div>
-        <div className="w-1/3 p-4 text-center">
+        <div className="w-full lg:w-1/3 p-4 text-center">
           <p className="w-[60px] h-[60px] flex items-center justify-center bg-black/25 rounded-full mx-auto mb-4">
             <span className="w-[45px] h-[45px] flex items-center justify-center bg-black/90 text-white rounded-full">
               <FaShippingFast size={25} />
@@ -69,7 +69,7 @@ export default function Footer() {
             Đương nhiên là sẽ đàm bảo hàng đến tay bạn sẽ ko móm méo{" "}
           </p>
         </div>
-        <div className="w-1/3 p-4 text-center">
+        <div className="w-full lg:w-1/3 p-4 text-center">
           <p className="w-[60px] h-[60px] flex items-center justify-center bg-black/25 rounded-full mx-auto mb-4">
             <span className="w-[45px] h-[45px] flex items-center justify-center bg-black/90 text-white rounded-full">
               <GoShieldCheck size={25} />
@@ -83,9 +83,9 @@ export default function Footer() {
           </p>
         </div>
       </div>
-      <footer className="w-full min-h-[300px] bg-black">
-        <div className="max-w-[1200px] h-full mx-auto pt-10 flex text-white">
-          <ul className="w-1/5 h-[300px] px-3 text-sm">
+      <footer className="w-full min-h-[300px] bg-black/80">
+        <div className="max-w-[1200px] h-full mx-auto pt-10 lg:flex text-white">
+          <ul className="w-full lg:w-1/5 px-3 lg:pl-4 text-sm text-center lg:text-left py-6">
             <h1 className="py-2 text-2xl font-semibold">Theo dõi</h1>
             <li className="py-2 my-2">Giảm 15% cho đơn hàng đầu tiên</li>
             <li className="w-full h-[50px] ">
@@ -114,46 +114,41 @@ export default function Footer() {
               </form>
             </li>
           </ul>
-          <ul className="w-1/5 h-[300px] px-3 text-sm">
+          <ul className="w-full lg:w-1/5 px-3 lg:pl-4 text-sm text-center lg:text-left py-6">
             <h1 className="py-2 text-2xl font-semibold">Hỗ trợ</h1>
-            <li className="py-2 flex gap-4">
+            <li className="py-2 flex lg:justify-start justify-center gap-2">
               <span>
                 <MdLocationPin size={15} />
               </span>
-              <span className="text-sm">Đồng Đăng,TP.Lạng Sơn</span>
+              <span className="text-sm">
+                Khu Dây Thép, Đồng Đăng,TP.Lạng Sơn
+              </span>
             </li>
-            <li className="py-2 flex items-center gap-4">
+            <li className="py-2 flex items-center lg:justify-start justify-center gap-2">
               <span>
                 <MdMail size={14} />
               </span>
 
-              <span className="text-sm">hotrokhachhang@gmail.com</span>
+              <span className="text-sm">cskhQnshop@gmail.com</span>
             </li>
-            <li className="py-2 flex items-center gap-4">
+            <li className="py-2 flex items-center lg:justify-start justify-center gap-2">
               <span>
                 <FaPhoneAlt size={12} />
               </span>
-              <span className="text-sm">029453853239</span>
+              <span className="text-sm">029453853</span>
             </li>
           </ul>
-          <ul className="w-1/5 h-[300px] px-3 text-sm">
+          <ul className="w-full lg:w-1/5 px-3 lg:pl-4 text-sm text-center lg:text-left py-6">
             <h1 className="py-2 text-2xl font-semibold">Khác</h1>
             <li>
               <Link
-                href="/"
+                href="/terms&policy"
                 className="block w-full h-full py-2 hover:underline"
               >
-                Điều khoản người dùng
+                Điều khoản & bảo mật
               </Link>
             </li>
-            <li>
-              <Link
-                href="/"
-                className="block w-full h-full py-2 hover:underline"
-              >
-                Chính sách bảo mật
-              </Link>
-            </li>
+
             <li>
               <Link
                 href="/contact"
@@ -164,14 +159,14 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                href="/"
+                href="/FAQ"
                 className="block w-full h-full py-2 hover:underline"
               >
                 FAQ
               </Link>
             </li>
           </ul>
-          <ul className="w-1/5 h-[300px] px-3 text-sm">
+          <ul className="w-full lg:w-1/5 px-3 lg:pl-4 text-sm text-center lg:text-left py-6">
             <h1 className="py-2 text-2xl font-semibold">Tài khoản</h1>
             <li>
               <Link
@@ -181,7 +176,7 @@ export default function Footer() {
                 Tài khoản của tôi
               </Link>
             </li>
-            <li className="flex items-center gap-2">
+            <li className="flex items-center lg:justify-start justify-center gap-2">
               <Link
                 href="/sign-in"
                 className="block h-full py-2 hover:underline"
@@ -204,16 +199,19 @@ export default function Footer() {
                 Giỏ hàng
               </Link>
             </li>
-            {/* <li>
-            <Link href="/" className="block w-full h-full py-2 hover:underline">
-              Shop
-            </Link>
-          </li> */}
+            <li>
+              <Link
+                href="/products"
+                className="block w-full h-full py-2 hover:underline"
+              >
+                Shop
+              </Link>
+            </li>
           </ul>
-          <ul className="w-1/5 h-[300px] px-3 text-sm">
+          <ul className="w-full lg:w-1/5 px-3 lg:pl-4 text-sm text-center lg:text-left py-6">
             <h1 className="py-2 text-2xl font-semibold">Cài đặt app</h1>
             <li className="py-2">{" Tiết kiệm đến $3 khi tải App :))"}</li>
-            <li className="py-2 flex items-center space-x-4">
+            <li className="py-2 flex items-center lg:justify-start justify-center space-x-4">
               <Image src={qrAppURL} alt="ảnh QR" width={90} height={80} />
               <div className="flex-col  space-y-1">
                 <Image
@@ -231,7 +229,7 @@ export default function Footer() {
               </div>
             </li>
             <li className="py-2">
-              <ul className="flex items-center">
+              <ul className="flex items-center lg:justify-start justify-center">
                 <li>
                   <Link
                     href={igLink}
@@ -272,9 +270,9 @@ export default function Footer() {
             </li>
           </ul>
         </div>
-        <p className="bg-black text-xs text-white/40 py-2.5 text-center  border-t-[2.5px] border-[#b3b3b3]">
+        <div className="max-w-[1200px] mx-auto lg:text-left text-center text-xs text-white/70 py-6  pl-3 ">
           &copy; 2025 - Make with 🧠- by Quý Nguyễn,
-        </p>
+        </div>
       </footer>
     </>
   );

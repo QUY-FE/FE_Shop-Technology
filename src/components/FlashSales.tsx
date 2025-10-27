@@ -92,55 +92,34 @@ export default function FlashSales() {
           {data.map((product, index) => (
             // === PHẦN CARD SẢN PHẨM ===
             // Bỏ w, h cố định, thêm shadow và transition
-            <article
-              className="block w-full rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
-              key={`product__${index}`}
+            <Link
+              href={`/products/${product?.slug}`}
+              className="relative block w-full h-auto bg-white rounded-lg shadow-lg overflow-hidden transition-shadow hover:shadow-xl duration-300 hover:-top-[3px]"
+              key={`product__${product.slug}_${index}`}
             >
-              {/* 1. Phần hình ảnh (relative group) */}
-              <div className="relative group w-full h-[250px] bg-gray-100 rounded-t-lg overflow-hidden">
+              {/* 1. Image Area */}
+              <div className="relative group w-full h-[250px] bg-gray-100 overflow-hidden">
                 <Image
                   src={product?.url}
                   alt={product?.title}
-                  layout="fill" // Dùng layout fill để lấp đầy div
-                  objectFit="cover" // Đảm bảo ảnh cover đẹp
-                  className="transition-transform duration-300 group-hover:scale-105" // Zoom nhẹ khi hover
+                  layout="fill"
+                  objectFit="cover"
+                  className="relative transition-transform duration-300 group-hover:scale-105"
                 />
 
-                {/* Sale Badge */}
-                <span className="absolute top-4 left-4 w-auto px-3 h-[27px] bg-[#e34646] text-white rounded text-sm flex items-center justify-center font-semibold">
+                <span className="absolute top-3 left-3 w-auto h-[27px] px-3 flex items-center justify-center bg-[#e34646] text-white rounded text-sm font-semibold">
                   -{product?.salePercent}%
                 </span>
-
-                {/* 2. Nút bấm hover (thay thế Button component của bạn bằng Link) */}
-                {/* Hiệu ứng: Trượt từ dưới lên và mờ dần (thay vì 2 nút to) */}
-                <div className="absolute bottom-0 left-0 w-full p-2 flex gap-2 opacity-0 group-hover:opacity-100 translate-y-full group-hover:translate-y-0 transition-all duration-300">
-                  <Link
-                    href={`/cart`}
-                    className="flex-1 bg-white text-black text-center py-2.5 rounded-md text-sm font-medium hover:bg-gray-200 transition-colors"
-                  >
-                    Thêm vào giỏ
-                  </Link>
-                  <Link
-                    href={`/product/${product?.slug}`}
-                    className="flex-1 bg-[#e34646] text-white text-center py-2.5 rounded-md text-sm font-medium hover:bg-red-700 transition-colors"
-                  >
-                    Xem sản phẩm
-                  </Link>
-                </div>
               </div>
-
-              {/* 3. Phần Text (Thêm padding) */}
-              <div className="p-4 bg-white rounded-b-lg">
-                {/* Bỏ h cố định, dùng truncate (cắt ngắn) */}
+              {/* 2. Text Area */}
+              <div className="p-4">
                 <h1
-                  className="font-medium text-lg truncate mb-2"
+                  className="w-full font-medium text-lg truncate mb-2"
                   title={product?.title}
                 >
                   {product?.title}
                 </h1>
-
-                {/* Bỏ h cố định, thêm mb-2 */}
-                <div className="flex items-center gap-3 mb-2">
+                <div className="flex items-baseline gap-2 mb-2">
                   <p className="text-[#e34646] text-lg font-semibold">
                     ${product?.newPrice}
                   </p>
@@ -148,23 +127,21 @@ export default function FlashSales() {
                     ${product?.oldPrice}
                   </p>
                 </div>
-
-                {/* Bỏ h cố định, chỉnh lại spacing */}
                 <div className="flex items-center">
                   <div className="flex items-center gap-1">
                     {[...Array(5)].map((_, i) => (
                       <FaStar
                         key={i}
-                        color={i < product.star ? "#ffad33" : "#e0e0e0"} // Dùng màu xám nhạt cho sao rỗng
+                        color={i < product.star ? "#ffad33" : "#e0e0e0"}
                       />
                     ))}
                   </div>
-                  <p className="ml-3 text-sm text-gray-500 font-medium">
+                  <p className="ml-2 text-sm text-gray-500 font-medium">
                     ({product?.countBuy})
                   </p>
                 </div>
               </div>
-            </article>
+            </Link>
           ))}
         </Carousel>
       </div>

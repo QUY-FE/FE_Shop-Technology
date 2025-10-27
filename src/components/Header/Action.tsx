@@ -99,48 +99,12 @@ export default function Action({ currentUser }: { currentUser?: boolean }) {
         <FaShoppingCart className="pb-1 transition mx-auto" size={25} />
       </Link>
       {currentUser ? (
-        <button
-          className="relative w-10 h-10 rounded-full  hover:bg-black/10 active:bg-black/5"
-          onClick={() => setDropdown(!dropdown)}
+        <Link
+          href="/profile"
+          className="flex items-center justify-center w-10 h-10 rounded-full  hover:bg-black/10 active:bg-black/5"
         >
-          <FaRegUserCircle size={25} className="mx-auto" />
-          {dropdown && (
-            <>
-              {/* Overlay để đóng dropdown khi click ra ngoài */}
-              <div
-                className="fixed inset-0 z-10"
-                onClick={() => setDropdown(false)}
-              />
-              {/* Dropdown menu (z-20) */}
-              <div className="w-screen lg:w-[300px] bg-white shadow-lg absolute top-[50px] lg:top-[45px] right-0 rounded-md z-20 transition p-4">
-                <h1 className=" py-2 font-bold border-b-2 border-gray-300">
-                  Username
-                </h1>
-                <ul>
-                  {userMenu.map((item) => (
-                    <li key={item.id}>
-                      <Link
-                        href={item.href}
-                        className="py-2 w-full h-full flex items-center justify-between px-16 rounded-md hover:bg-black/10"
-                      >
-                        <p>{item.text}</p>
-                        <span>{item.icon}</span>
-                      </Link>
-                    </li>
-                  ))}
-                  <li className="border-colorBorder border-t-2">
-                    <button className="py-2 w-full h-full flex items-center justify-between px-16 rounded-md hover:bg-black/10">
-                      <p>Logout</p>
-                      <span>
-                        <IoMdExit />
-                      </span>
-                    </button>
-                  </li>
-                </ul>
-              </div>
-            </>
-          )}
-        </button>
+          <FaRegUserCircle size={28} className="mx-auto" />
+        </Link>
       ) : null}
     </section>
   );

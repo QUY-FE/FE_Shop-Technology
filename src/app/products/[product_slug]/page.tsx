@@ -3,7 +3,10 @@ import Image from "next/image";
 import { FaStar } from "react-icons/fa";
 import Link from "next/link";
 import productURL from "#/assets/images/keyboard.jpg";
-import Button, { CustomLeftArrow, CustomRightArrow } from "#/components/Button/Button";
+import Button, {
+  CustomLeftArrow,
+  CustomRightArrow,
+} from "#/components/Button/Button";
 import Carousel from "react-multi-carousel";
 import { FaRotate } from "react-icons/fa6";
 import { FaTruckFast } from "react-icons/fa6";
@@ -64,7 +67,6 @@ const products = [
     salePercent: 20,
     category: "gaming",
   },
-  
 ];
 
 export default function Product({
@@ -129,12 +131,10 @@ export default function Product({
           <div className="text-gray-500 line-through mb-4 italic">
             ${product.oldPrice}
           </div>
-          <p className="mb-4 text-gray-700">
-            Mô tả sản phẩm .
-          </p>
+          <p className="mb-4 text-gray-700">Mô tả sản phẩm .</p>
           {/* Demo chọn màu, size */}
 
-          <div className="mb-4">
+          {/* <div className="mb-4">
             <div className="mb-2 font-semibold">Size:</div>
             <div className="flex gap-2">
               {["XS", "S", "M", "L", "XL"].map((size) => (
@@ -143,26 +143,32 @@ export default function Product({
                 </button>
               ))}
             </div>
-          </div>
+          </div> */}
           {/* Số lượng + nút mua */}
-          <div className="flex items-center gap-2 mb-4">
+          <div className="flex items-center gap-3 mb-4">
             <button className="px-3 py-1 border rounded">-</button>
             <span className="px-3">2</span>
             <button className="px-3 py-1 border rounded">+</button>
-            <Link href="/product/checkout">
-              <Button text="Mua ngay" w={115} h={40} primary />
+            <Button text="Thêm vào giỏ hàng" w={170} h={46} />
+            <Link href="/checkout">
+              <Button text="Mua ngay" w={115} h={46} primary />
             </Link>
           </div>
           {/* Thông tin giao hàng */}
           <div className="border rounded p-4 mb-2 flex flex-col gap-2">
             <div className="flex items-center gap-2">
-              <span className="font-semibold flex items-center gap-3"><FaTruckFast size={25} className="text-primary" /> Miễn phí ship</span>
+              <span className="font-semibold flex items-center gap-3">
+                <FaTruckFast size={25} className="text-primary" /> Miễn phí ship
+              </span>
               <span className="text-gray-500 text-sm">
                 Nhập địa chỉ để đơn hàng đến nhanh nhất
               </span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="font-semibold flex items-center gap-3"><FaRotate size={25} className="text-primary"/> Chính sách đổi trả</span>
+              <span className="font-semibold flex items-center gap-3">
+                <FaRotate size={25} className="text-primary" /> Chính sách đổi
+                trả
+              </span>
               <span className="text-gray-500 text-sm">
                 Hoàn hàng trong vòng 30 ngày
               </span>
@@ -201,51 +207,56 @@ export default function Product({
             customRightArrow={<CustomRightArrow />}
           >
             {related.map((product, index) => (
-              <article
-                className="relative group block w-[205px] h-[300px] md:w-[260px] md:h-[320px] lg:w-[270px] lg:h-[370px] transition"
-                key={`product__${index}`}
+              <Link
+                href={`/products/${product?.slug}`}
+                className="relative block w-full h-auto bg-white rounded-lg shadow-lg overflow-hidden transition-shadow hover:shadow-xl duration-300 hover:-top-[3px]"
+                key={`product__${product.slug}_${index}`}
               >
-                <div className="absolute w-full  bottom-[80px]  text-white  hidden rounded-lg group-hover:flex items-center justify-between py-3 px-2 z-50">                
-                <Link href={`/cart`}>
-                  <Button text="Thêm vào giỏ hàng" w={125} h={56} />              
-                </Link>
-                <Link href={`/product/${product?.slug}`}>
-                  <Button text="Xem Sản phẩm" primary w={125} h={56} />
-                </Link>
-              </div>
-                <Image
-                  src={product?.url}
-                  alt={product?.title}
-                  width={270}
-                  height={250}
-                  className="relative object-cover rounded-lg shadow-md"
-                />
-                <span className="absolute top-4 left-3 w-[55px] h-[27px] bg-[#e34646] text-white rounded text-md text-center font-semibold">
-                  -{product?.salePercent}%
-                </span>
-                <h1 className="w-full h-[40px] font-medium leading-[40px]">
-                  {product?.title}
-                </h1>
-                <div className="flex items-center gap-3">
-                  <p className="h-[30px] text-[#e34646] text-lg font-medium leading-[30px]">
-                    ${product?.newPrice}
-                  </p>
-                  <p className="h-[30px] leading-[30px] font-medium text-sm italic line-through text-black/60 ">
-                    ${product?.oldPrice}
-                  </p>
+                {/* 1. Image Area */}
+                <div className="relative group w-full h-[250px] bg-gray-100 overflow-hidden">
+                  <Image
+                    src={product?.url}
+                    alt={product?.title}
+                    layout="fill"
+                    objectFit="cover"
+                    className="relative transition-transform duration-300 group-hover:scale-105"
+                  />
+
+                  <span className="absolute top-3 left-3 w-auto h-[27px] px-3 flex items-center justify-center bg-[#e34646] text-white rounded text-sm font-semibold">
+                    -{product?.salePercent}%
+                  </span>
                 </div>
-                <div className="flex items-center h-[30px] leading-[30px]">
-                  {[...Array(5)].map((_, i) => (
-                    <FaStar
-                      key={i}
-                      color={i < product.star ? "#ffad33" : "gray"}
-                    />
-                  ))}
-                  <p className="px-4 text-black/70 font-medium">
-                    ({product?.countBuy})
-                  </p>
+                {/* 2. Text Area */}
+                <div className="p-4">
+                  <h1
+                    className="w-full font-medium text-lg truncate mb-2"
+                    title={product?.title}
+                  >
+                    {product?.title}
+                  </h1>
+                  <div className="flex items-baseline gap-2 mb-2">
+                    <p className="text-[#e34646] text-lg font-semibold">
+                      ${product?.newPrice}
+                    </p>
+                    <p className="font-medium text-sm italic line-through text-gray-500">
+                      ${product?.oldPrice}
+                    </p>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="flex items-center gap-1">
+                      {[...Array(5)].map((_, i) => (
+                        <FaStar
+                          key={i}
+                          color={i < product.star ? "#ffad33" : "#e0e0e0"}
+                        />
+                      ))}
+                    </div>
+                    <p className="ml-2 text-sm text-gray-500 font-medium">
+                      ({product?.countBuy})
+                    </p>
+                  </div>
                 </div>
-              </article>
+              </Link>
             ))}
           </Carousel>
         </div>
