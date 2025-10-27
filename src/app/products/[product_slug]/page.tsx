@@ -21,7 +21,7 @@ const products = [
     star: 3,
     countBuy: 36,
     salePercent: 20,
-    category: "gaming",
+    category: "computer",
   },
   {
     slug: "ban-phim-co-k550-v2",
@@ -43,7 +43,7 @@ const products = [
     star: 3,
     countBuy: 36,
     salePercent: 20,
-    category: "gaming",
+    category: "laptop",
   },
   {
     slug: "tai-nghe-gaming-G102",
@@ -54,7 +54,7 @@ const products = [
     star: 3,
     countBuy: 36,
     salePercent: 20,
-    category: "gaming",
+    category: "phones",
   },
   {
     slug: "lot-chuot",
@@ -65,7 +65,7 @@ const products = [
     star: 3,
     countBuy: 36,
     salePercent: 20,
-    category: "gaming",
+    category: "headphones",
   },
 ];
 

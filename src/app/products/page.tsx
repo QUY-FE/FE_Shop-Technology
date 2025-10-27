@@ -38,7 +38,7 @@ export default function Page() {
   };
 
   return (
-    <section className="w-full pb-10">
+    <section className="w-full pb-10 min-h-screen">
       {/* Pass state and handler down to Categories */}
       <Categories
         selectedCategory={selectedCategory}
@@ -52,7 +52,7 @@ export default function Page() {
       {/* Kiểm tra xem filteredProducts có phần tử nào không */}
       {filteredProducts.length > 0 ? (
         // Nếu CÓ, hiển thị lưới sản phẩm
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {paginatedProducts.map((product, index) => (
             <Link
               href={`/products/${product?.slug}`}

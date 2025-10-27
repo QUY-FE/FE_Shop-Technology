@@ -20,13 +20,13 @@ interface CategoryItem {
 
 // Gán type cho mảng
 const categoriesList: CategoryItem[] = [
-  { href: "#", title: "Phones", icon: MdPhoneIphone },
-  { href: "#", title: "Laptops", icon: CiLaptop },
-  { href: "#", title: "headphones", icon: FaHeadphonesAlt },
+  { href: "#", title: "Phone", icon: MdPhoneIphone },
+  { href: "#", title: "Laptop", icon: CiLaptop },
+  { href: "#", title: "headphone", icon: FaHeadphonesAlt },
   { href: "#", title: "camera", icon: CiCamera },
   { href: "#", title: "gaming", icon: IoGameControllerOutline },
   { href: "#", title: "Computer", icon: FaComputer },
-  { href: "#", title: "toys", icon: TbHorseToy },
+  { href: "#", title: "toy", icon: TbHorseToy },
 ];
 
 // 3. Định nghĩa Props cho component này

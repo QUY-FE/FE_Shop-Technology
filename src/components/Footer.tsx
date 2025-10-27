@@ -44,7 +44,7 @@ export default function Footer() {
   };
   return (
     <>
-      <div className="max-w-screen-xl mx-auto  mt-10 flex-col lg:flex gap-4  border-b-[2.5px] border-colorBorder">
+      <div className="max-w-screen-xl mx-auto  mt-10 block lg:flex gap-4  ">
         <div className="w-full lg:w-1/3 p-4 text-center">
           <p className="w-[60px] h-[60px] flex items-center justify-center bg-black/25 rounded-full mx-auto mb-4">
             <span className="w-[45px] h-[45px] flex items-center justify-center bg-black/90 text-white rounded-full">
