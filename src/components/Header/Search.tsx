@@ -18,7 +18,7 @@ const Search = () => {
       product?.title?.toLowerCase().includes(debounceQuery.trim().toLowerCase())
     );
     setFilteredProducts(results);
-  }, [debounceQuery, products]);
+  },[]);
 
   const handleDeleteInput = () => setKeyword("");
 
